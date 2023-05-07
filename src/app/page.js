@@ -1,5 +1,5 @@
 async function getData() {
-  const res = await fetch('https://full-api.vercel.app/user', { cache: 'no-store' });
+  const res = await fetch('https://full-api.vercel.app/user', { mode: 'cors', cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
