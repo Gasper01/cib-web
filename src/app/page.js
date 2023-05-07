@@ -1,7 +1,5 @@
-import { data } from 'autoprefixer';
-
 async function getData() {
-  const res = await fetch('https://full-api.vercel.app/user');
+  const res = await fetch('https://full-api.vercel.app/user', { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
