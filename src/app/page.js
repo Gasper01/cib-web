@@ -1,9 +1,9 @@
 async function getData() {
-  const res = await fetch('http://localhost:400/user', {
+  const res = await fetch('https://full-api.vercel.app/user', {
     cache: 'no-store',
     mode: "cors",
     headers: {
-      Origin:'http://localhost:3000',
+      Origin:'https://cib-web.vercel.app',
      'Content-Type': 'application/json',
    },
   });
