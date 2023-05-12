@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import LoginController from '../controller/login.controller';
+import LoginController from './login.controller';
 import { useRouter } from 'next/navigation';
 export default function LoginhtmlForm() {
   const router = useRouter();
@@ -10,12 +10,12 @@ export default function LoginhtmlForm() {
   const [password, setPassword] = useState('');
   const [Error, setError] = useState('');
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      router.push('/');
-    }
-  }, [router]);
+ // useEffect(() => {
+  //  const token = localStorage.getItem('token');
+  //  if (token) {
+  //    router.push('/');
+  //  }
+ // }, [router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
