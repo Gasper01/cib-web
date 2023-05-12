@@ -3,11 +3,9 @@ export default async function LoginController(email, password, router) {
     const response = await fetch('https://full-api.vercel.app/admin/signIn', {
       method: 'POST',
       cache: 'no-store',
-       mode: "cors",
+      mode: "cors",
        headers: {
-        Origin: 'https://cib-web.vercel.app',
         'Content-Type': 'application/json',
-      
       },
       credentials: "include",
     

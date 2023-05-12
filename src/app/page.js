@@ -1,9 +1,11 @@
 async function getData() {
   const res = await fetch('http://localhost:400/user', {
     cache: 'no-store',
+    mode: "cors",
     headers: {
-      Origin: 'http://localhost:3000', // Agregar la cabecera Origin con el valor del origen permitido
-    },
+      Origin:'http://localhost:3000',
+     'Content-Type': 'application/json',
+   },
   });
   if (!res.ok) {
     throw new Error('Failed to fetch data');
