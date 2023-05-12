@@ -6,6 +6,7 @@ export default async function LoginController(email, password, router) {
       mode: "cors",
        headers: {
         'Content-Type': 'application/json',
+        Origin:'https://cib-web.vercel.app',
       },
       credentials: "include",
     
