@@ -1,7 +1,7 @@
 
-import { getUser } from "./lib/getUser";
+import { GetUser } from "./lib/getUser";
 export default async function Page() {
-  const res = await getUser();
+  const res = await GetUser();
 
   return (
     <main>

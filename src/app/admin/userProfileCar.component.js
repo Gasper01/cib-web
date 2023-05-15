@@ -1,7 +1,7 @@
 'use client';
-import { userProfile } from "../context/User";
+import { UserProfile } from "../context/User";
 export default async function UserInfo() {
-  const user = userProfile()
+  const user = UserProfile()
   return (
     <main>
       {user?.id}

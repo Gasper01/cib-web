@@ -1,5 +1,5 @@
 
-export default async function verifyUser(token) {
+export default async function VerifyUser(token) {
   const response = await fetch('https://full-api.vercel.app/user/verifyuser', {
     cache: 'no-store',
     headers: {

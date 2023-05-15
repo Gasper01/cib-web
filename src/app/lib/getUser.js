@@ -1,5 +1,5 @@
 
-export async function getUser() {
+export async function GetUser() {
     const res = await fetch('https://full-api.vercel.app/user', {
       cache: 'no-store',
       mode: "cors",

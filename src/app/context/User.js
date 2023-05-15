@@ -5,7 +5,7 @@ import verifyUser from '../lib/verifyUser';
 
 export const UserContext = createContext('');
 
-export function userProfile() {
+export function  UserProfile() {
   return useContext(UserContext);
 }
 
