@@ -1,13 +1,16 @@
 import '../globals.css';
-import UserInfo from './userInfo';
+import UserContextProvider from '../context/User';
+import UserProfileCard from './userProfileCar.component';
 export default function AdminLayout({ children }) {
   return (
-    <html lang='en'>
-      <body>
-        <div></div>
-        <UserInfo />
-        {children}
-      </body>
-    </html>
-  );
+  
+       <>
+         <UserContextProvider>
+         <UserProfileCard/> 
+         {children}
+         </UserContextProvider >
+ 
+       </>
+        
+  )    
 }

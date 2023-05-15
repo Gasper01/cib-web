@@ -1,21 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import LoginController from './login.controller';
 import { useRouter } from 'next/navigation';
-export default function LoginhtmlForm() {
-  const router = useRouter();
 
+
+
+export default function LoginForm() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [Error, setError] = useState('');
-
- // useEffect(() => {
-  //  const token = localStorage.getItem('token');
-  //  if (token) {
-  //    router.push('/');
-  //  }
- // }, [router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,7 +79,7 @@ export default function LoginhtmlForm() {
                   </div>
                 </div>
                 <a href='#' className='text-sm font-medium text-primary-600 hover:underline dark:text-primary-500'>
-                  htmlForgot password?
+                  Forgot password?
                 </a>
               </div>
               <button

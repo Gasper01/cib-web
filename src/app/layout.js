@@ -1,10 +1,9 @@
 import './globals.css';
-export default function RootLayout({ children }) {
+export default function RootLayout({ children}) {
   return (
-    <html lang='en'>
+    <html>
       <body>
-        <p>hola este es root layout</p>
-        {children}
+      {children}
       </body>
     </html>
   );
