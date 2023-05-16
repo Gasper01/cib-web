@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 export default async function LoginController(email, password, router) {
   try {
    
-    const response = await fetch('http://localhost:400/admin/signIn', {
+    const response = await fetch('https://full-api.vercel.app/admin/signIn', {
       method: 'POST',
       cache: 'no-store',
       mode: "cors",
@@ -19,8 +19,8 @@ export default async function LoginController(email, password, router) {
       throw new Error(error.message);
     }
     const token =await response.json();
-    Cookies.set('token',token)
-    router.replace('/')
+    Cookies.set('token',token, { sameSite: 'none', secure: true })
+    router.replace('/admin')
   } catch (error) {
     return error.message;
   }
