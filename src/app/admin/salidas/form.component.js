@@ -1,32 +1,75 @@
 'use client'
 import { useState } from "react";
+import Datepicker from "../datepicker.component";
+import Dropdown from "../dropdown.component";
+import NextForm from "./nextForm.component";
 export default function Form(){
-    const [startDate, setStartDate] = useState(new Date().toISOString().split('T')[0]);
-   
-    return(
+  const [formState, setFormState] = useState({
+    startDate: new Date().toISOString().split('T')[0],
+    selectedMotorista: "",
+    selectedDestino: "",
+    showNextForm: false
+  });
 
+  const handleClick = () => {
+    setFormState({
+      ...formState,
+      showNextForm: true
+    });
+  };
+
+  const countryOptions = [
+    { value: 'US', label: 'United States' },
+    { value: 'CA', label: 'Canada' },
+    { value: 'FR', label: 'France' },
+    { value: 'DE', label: 'Germany' }
+  ];
+
+
+  return(
+ 
 <>
-
-<div className="relative max-w-sm">
-  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-    <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"></path></svg>
+   {formState.showNextForm ? (
+        <NextForm  destino={formState.selectedDestino} motorista={formState.selectedMotorista} fecha={formState.startDate} />
+      ) : (
+     <div className="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+  <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Despacho de materiales</h5>
+  <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">Optimiza la gestión de materiales con estos pasos.</p>
+  <div className="mx-auto  text-left  grid grid-cols-1 md:grid-cols-1 gap-4 max-w-lg">
+ 
+  <Datepicker 
+   label={"Selecione una Fecha"}
+   value={formState.startDate}
+   onChange={(e)=>setFormState({ ...formState, startDate: e.target.value })}
+  
+  />
+  <Dropdown
+        text={"Selecione un Motorista"}
+        id="Motorista"
+        value={formState.selectedMotorista}
+        onChange={(e)=>setFormState({ ...formState, selectedMotorista: e.target.value })}
+        options={countryOptions}
+      />
+        <Dropdown
+        text={"Selecione un Destino"}
+        id="Destino"
+        value={formState.selectedDestino}
+        onChange={(e)=>setFormState({ ...formState, selectedDestino: e.target.value })}
+        options={countryOptions}
+      />
+   
+    <button
+      type='button'
+      onClick={handleClick}
+      className='w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
+        >
+        Siguiente
+      </button>
   </div>
-  <input   value={startDate} onChange={(event) => setStartDate(event.target.value)}  type="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-</div>
+  </div>       
+) } 
 
-<label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selec Fincas</label>
-<select id="fincas" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <option defaultValue >finca modelo</option>
-  <option value="viilanueva">villanueva</option>
-</select>
-
-<label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selec sistema</label>
-<select id="sistema" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <option defaultValue >Mq2</option>
-  <option value="mq3">Mq3</option>
-</select>
-
-</>       
+</>    
        
     )
 }
