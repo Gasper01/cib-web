@@ -8,8 +8,21 @@ export default function Form(){
     startDate: new Date().toISOString().split('T')[0],
     selectedMotorista: "",
     selectedDestino: "",
+    selectedLabel:"",
     showNextForm: false
   });
+
+
+  const handleDropdownChange = (event) => {
+    const { value, selectedIndex } = event.target;
+
+    setFormState({
+      ...formState,
+      selectedMotorista: value,
+      selectedLabel: event.target[selectedIndex].text
+    });
+  };
+
 
   const handleClick = () => {
     setFormState({
@@ -30,12 +43,16 @@ export default function Form(){
  
 <>
    {formState.showNextForm ? (
-        <NextForm  destino={formState.selectedDestino} motorista={formState.selectedMotorista} fecha={formState.startDate} />
+        <NextForm 
+           fecha={formState.startDate}  
+           motorista={formState.selectedMotorista}
+            placaVeiculo={formState.selectedLabel}
+            destino={formState.selectedDestino} />
       ) : (
      <div className="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
   <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Despacho de materiales</h5>
   <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">Optimiza la gestión de materiales con estos pasos.</p>
-  <div className="mx-auto  text-left  grid grid-cols-1 md:grid-cols-1 gap-4 max-w-lg">
+  <div className="mx-auto  text-left  grid grid-cols-1 md:grid-cols-1 gap-4 ">
  
   <Datepicker 
    label={"Selecione una Fecha"}
@@ -47,7 +64,7 @@ export default function Form(){
         text={"Selecione un Motorista"}
         id="Motorista"
         value={formState.selectedMotorista}
-        onChange={(e)=>setFormState({ ...formState, selectedMotorista: e.target.value })}
+        onChange={handleDropdownChange}
         options={countryOptions}
       />
         <Dropdown

@@ -1,4 +1,4 @@
-import ProductSelect from "./exalple"
+
 import Form from "./form.component"
 export default function Page(){
     return(
