@@ -1,12 +1,12 @@
-"use client"
-import  { createContext, useContext, useState, useEffect } from 'react';
+'use client';
+import { createContext, useContext, useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import verifyUser from '../lib/verifyUser';
 export const UserContext = createContext(null);
 
-export const UserProfile = () =>{
+export const UserProfile = () => {
   return useContext(UserContext);
-}
+};
 
 export default function UserContextProvider({ children }) {
   const [user, setUser] = useState(null);
