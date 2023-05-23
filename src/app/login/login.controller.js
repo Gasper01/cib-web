@@ -1,26 +1,40 @@
 import Cookies from 'js-cookie';
-export default async function LoginController(email, password, router) {
-  try {
-    const response = await fetch('https://full-api.vercel.app/admin/signIn', {
-      method: 'POST',
-      cache: 'no-store',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
+import getlogin from '../lib/login';
+import { useState } from 'react';
 
-      body: JSON.stringify({ email, password }),
-    });
+export default function LoginController(router) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setLoading] = useState(false);
 
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setErrorMessage('');
+
+    try {
+      const response = await getlogin(email, password);
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+      }
+      const token = await response.json();
+      Cookies.set('token', token, { sameSite: 'none', secure: true });
+      router.replace('/admin');
+    } catch (error) {
+      setErrorMessage(error.message);
     }
-    const token = await response.json();
-    Cookies.set('token', token, { sameSite: 'none', secure: true });
-    router.replace('/admin');
-  } catch (error) {
-    return error.message;
-  }
+    setLoading(false);
+  };
+
+  return {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    errorMessage,
+    isLoading,
+    handleSubmit,
+  };
 }

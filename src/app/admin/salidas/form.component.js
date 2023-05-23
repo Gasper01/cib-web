@@ -1,34 +1,12 @@
 'use client';
-import { useState } from 'react';
 import Datepicker from '../datepicker.component';
 import Dropdown from '../dropdown.component';
-import TableProductos from './tatableproductos.component';
+import SearchProducts from './searchProducts.component';
+import { UserProfile } from '@/app/context/User';
+import { OutboundFormState } from './outboundFormState.controller';
 export default function Form() {
-  const [formState, setFormState] = useState({
-    startDate: new Date().toISOString().split('T')[0],
-    selectedMotorista: '',
-    selectedDestino: '',
-    selectedLabel: '',
-    showNextForm: false,
-    selectedsistema: '',
-  });
-
-  const handleDropdownChange = (event) => {
-    const { value, selectedIndex } = event.target;
-
-    setFormState({
-      ...formState,
-      selectedMotorista: value,
-      selectedLabel: event.target[selectedIndex].text,
-    });
-  };
-
-  const handleClick = () => {
-    setFormState({
-      ...formState,
-      showNextForm: true,
-    });
-  };
+  const { formState, setFormState, handleDropdownChange, OnClickSiguiente } =
+    OutboundFormState();
 
   const countryOptions = [
     { value: 'US', label: 'United States' },
@@ -37,6 +15,14 @@ export default function Form() {
     { value: 'DE', label: 'Germany' },
   ];
 
+  const userProfile = UserProfile();
+  const setUser = {};
+
+  if (userProfile !== null) {
+    const { id, username } = userProfile;
+    setUser.Iduser = id;
+    setUser.user = username;
+  }
   return (
     <>
       {formState.showNextForm ? (
@@ -51,12 +37,14 @@ export default function Form() {
             options={countryOptions}
           />
 
-          <TableProductos
+          <SearchProducts
             fecha={formState.startDate}
             motorista={formState.selectedMotorista}
             placaVeiculo={formState.selectedLabel}
             destino={formState.selectedDestino}
             sistema={formState.selectedsistema}
+            userId={setUser.Iduser}
+            username={setUser.user}
           />
         </>
       ) : (
@@ -87,7 +75,11 @@ export default function Form() {
 
           <button
             type="button"
-            onClick={handleClick}
+            onClick={OnClickSiguiente}
+            disabled={
+              formState.selectedMotorista === '' ||
+              formState.selectedDestino === ''
+            }
             className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
             Siguiente
