@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import ProductSelection from './productSelection.component';
 import Search from '@/app/lib/search';
 import Searchbotton from '../search.component';
-import Table from './Table.component';
+import Table from '../Table.component';
 import Loading from '../loading';
 import { SearchProductsController } from './SearchProducts.controller';
 

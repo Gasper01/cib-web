@@ -4,6 +4,7 @@ import Dropdown from '../dropdown.component';
 import SearchProducts from './searchProducts.component';
 import { UserProfile } from '@/app/context/User';
 import { OutboundFormState } from './outboundFormState.controller';
+import OutbondlongCard from './OutboundLogCard.component';
 export default function Form() {
   const { formState, setFormState, handleDropdownChange, OnClickSiguiente } =
     OutboundFormState();
@@ -27,63 +28,76 @@ export default function Form() {
     <>
       {formState.showNextForm ? (
         <>
-          <Dropdown
-            text={'Selecione un sistema'}
-            id="Sistema"
-            value={formState.selectedsistema}
-            onChange={(e) =>
-              setFormState({ ...formState, selectedsistema: e.target.value })
-            }
-            options={countryOptions}
-          />
-
-          <SearchProducts
+          <OutbondlongCard
+            title={'Encabezados del Despacho'}
             fecha={formState.startDate}
             motorista={formState.selectedMotorista}
-            placaVeiculo={formState.selectedLabel}
             destino={formState.selectedDestino}
-            sistema={formState.selectedsistema}
-            userId={setUser.Iduser}
-            username={setUser.user}
-          />
+           
+          >
+            <Dropdown
+              text={'Selecione un sistema'}
+              id="Sistema"
+              value={formState.selectedsistema}
+              onChange={(e) =>
+                setFormState({ ...formState, selectedsistema: e.target.value })
+              }
+              options={countryOptions}
+            />
+
+            <SearchProducts
+              fecha={formState.startDate}
+              motorista={formState.selectedMotorista}
+              placaVeiculo={formState.selectedLabel}
+              destino={formState.selectedDestino}
+              sistema={formState.selectedsistema}
+              userId={setUser.Iduser}
+              username={setUser.user}
+            />
+          </OutbondlongCard>
         </>
       ) : (
         <>
-          <Datepicker
-            label={'Selecione una Fecha'}
-            value={formState.startDate}
-            onChange={(e) =>
-              setFormState({ ...formState, startDate: e.target.value })
-            }
-          />
-          <Dropdown
-            text={'Selecione un Motorista'}
-            id="Motorista"
-            value={formState.selectedMotorista}
-            onChange={handleDropdownChange}
-            options={countryOptions}
-          />
-          <Dropdown
-            text={'Selecione un Destino'}
-            id="Destino"
-            value={formState.selectedDestino}
-            onChange={(e) =>
-              setFormState({ ...formState, selectedDestino: e.target.value })
-            }
-            options={countryOptions}
-          />
-
-          <button
-            type="button"
-            onClick={OnClickSiguiente}
-            disabled={
-              formState.selectedMotorista === '' ||
-              formState.selectedDestino === ''
-            }
-            className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          <OutbondlongCard
+            title={'Despacho de materiales'}
+            subtitle={' Optimiza la gestión de materiales con estos pasos.'}
           >
-            Siguiente
-          </button>
+            <Datepicker
+              label={'Selecione una Fecha'}
+              value={formState.startDate}
+              onChange={(e) =>
+                setFormState({ ...formState, startDate: e.target.value })
+              }
+            />
+            <Dropdown
+              text={'Selecione un Motorista'}
+              id="Motorista"
+              value={formState.selectedMotorista}
+              onChange={handleDropdownChange}
+              options={countryOptions}
+            />
+            <Dropdown
+              text={'Selecione un Destino'}
+              id="Destino"
+              value={formState.selectedDestino}
+              onChange={(e) =>
+                setFormState({ ...formState, selectedDestino: e.target.value })
+              }
+              options={countryOptions}
+            />
+
+            <button
+              type="button"
+              onClick={OnClickSiguiente}
+              disabled={
+                formState.selectedMotorista === '' ||
+                formState.selectedDestino === ''
+              }
+              className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            >
+              Siguiente
+            </button>
+          </OutbondlongCard>
         </>
       )}
     </>

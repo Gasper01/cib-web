@@ -1,4 +1,4 @@
-import Table from './Table.component';
+import Table from '../Table.component';
 import { ProductosSeleccionadosController } from './productosSeleccionados.controller';
 export default function ProductosSeleccionados({
   productosSeleccionados,
