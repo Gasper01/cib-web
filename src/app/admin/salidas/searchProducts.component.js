@@ -1,5 +1,4 @@
-import { useState, Suspense } from 'react';
-import Cookies from 'js-cookie';
+import { Suspense } from 'react';
 import ProductSelection from './productSelection.component';
 import Search from '@/app/lib/search';
 import Searchbotton from '../search.component';

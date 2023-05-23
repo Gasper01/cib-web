@@ -13,7 +13,7 @@ export function ProductosSeleccionadosController(
     } else {
       setProductosSeleccionados([]);
     }
-  }, []);
+  }, [setProductosSeleccionados]);
 
   const eliminarProducto = (index) => {
     const nuevosProductosSeleccionados = [...productosSeleccionados];
