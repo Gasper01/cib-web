@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
-import ProductSelection from './productSelection.component';
+import ProductSelection from './selectedProducts.component';
 import Search from '@/app/lib/search';
 import Searchbotton from '../search.component';
 import Table from '../Table.component';
 import Loading from '../loading';
-import { SearchProductsController } from './SearchProducts.controller';
+import { SearchProductsController } from './searchProducts.controller';
 
 export default function SearchProducts(props) {
   const {
@@ -12,17 +12,17 @@ export default function SearchProducts(props) {
     setSearchData,
     productos,
     setProductos,
-    productosSeleccionados,
+    selectedProducts,
     searching,
     setSearching,
-    setProductosSeleccionados,
+    setselectedProducts,
     agregarProducto,
     aumentarCantidad,
     disminuirCantidad,
     actualizarCantidad,
   } = SearchProductsController(props);
 
-  const onSubmitBuscarProductos = async (e) => {
+  const onSubmitSearchProducts = async (e) => {
     e.preventDefault();
     setSearching(true);
     try {
@@ -41,7 +41,7 @@ export default function SearchProducts(props) {
   return (
     <>
       <Searchbotton
-        onSubmitBuscarProductos={onSubmitBuscarProductos}
+        onSubmitSearchProducts={onSubmitSearchProducts}
         setSearchData={setSearchData}
         searching={searching}
       />
@@ -122,8 +122,8 @@ export default function SearchProducts(props) {
       </Suspense>
 
       <ProductSelection
-        productosSeleccionados={productosSeleccionados}
-        setProductosSeleccionados={setProductosSeleccionados}
+        selectedProducts={selectedProducts}
+        setselectedProducts={setselectedProducts}
       />
     </>
   );

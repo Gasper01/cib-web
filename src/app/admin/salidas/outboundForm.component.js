@@ -4,8 +4,8 @@ import Dropdown from '../dropdown.component';
 import SearchProducts from './searchProducts.component';
 import { UserProfile } from '@/app/context/User';
 import { OutboundFormState } from './outboundFormState.controller';
-import OutbondlongCard from './OutboundLogCard.component';
-export default function Form() {
+import OutbondlongCard from './logCardView.component';
+export default function OutboundForm() {
   const { formState, setFormState, handleDropdownChange, OnClickSiguiente } =
     OutboundFormState();
 
@@ -33,7 +33,6 @@ export default function Form() {
             fecha={formState.startDate}
             motorista={formState.selectedMotorista}
             destino={formState.selectedDestino}
-           
           >
             <Dropdown
               text={'Selecione un sistema'}

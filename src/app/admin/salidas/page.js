@@ -1,4 +1,4 @@
-import Form from './form.component';
+import OutboundForm from './outboundForm.component';
 export default function Page() {
-  return <Form />;
+  return <OutboundForm />;
 }

@@ -1,28 +1,25 @@
 import Table from '../Table.component';
-import { ProductosSeleccionadosController } from './productosSeleccionados.controller';
+import { selectedProductsController } from './selectedProducts.controller';
 export default function ProductosSeleccionados({
-  productosSeleccionados,
-  setProductosSeleccionados,
+  selectedProducts,
+  setselectedProducts,
 }) {
   const { eliminarProducto, aumentarCantidad, disminuirCantidad } =
-    ProductosSeleccionadosController(
-      setProductosSeleccionados,
-      productosSeleccionados
-    );
+    selectedProductsController(selectedProducts, setselectedProducts);
 
   return (
     <div>
       <Table title={'Productos Selecionados'}>
-        {productosSeleccionados
+        {selectedProducts
           .slice()
           .reverse()
-          .map((producto, index, array) => (
+          .map((products, index, array) => (
             <tr
               key={index}
               className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
               <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                {producto.nombre}
+                {products.nombre}
               </td>
               <td className="px-6 py-4 justify-end space-x-3">
                 <div className="flex items-center justify-end space-x-3">
@@ -44,7 +41,7 @@ export default function ProductosSeleccionados({
                   </button>
                   <div>
                     <span className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                      {producto.cantidad}
+                      {products.cantidad}
                     </span>
                   </div>
                   <button

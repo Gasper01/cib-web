@@ -3,50 +3,44 @@ import Cookies from 'js-cookie';
 export function SearchProductsController(props) {
   const [searchData, setSearchData] = useState('');
   const [productos, setProductos] = useState([]);
-  const [productosSeleccionados, setProductosSeleccionados] = useState([]);
+  const [selectedProducts, setselectedProducts] = useState([]);
   const [searching, setSearching] = useState(false);
 
   const agregarProducto = (producto) => {
     const productoConProps = { ...producto, ...props };
-    const nuevosProductosSeleccionados = [
-      ...productosSeleccionados,
-      productoConProps,
-    ];
-    setProductosSeleccionados(nuevosProductosSeleccionados);
-    Cookies.set(
-      'productosSeleccionados',
-      JSON.stringify(nuevosProductosSeleccionados)
-    );
+    const newselectedProducts = [...selectedProducts, productoConProps];
+    setselectedProducts(newselectedProducts);
+    Cookies.set('selectedProductscookie', JSON.stringify(newselectedProducts));
   };
 
   const aumentarCantidad = (id) => {
-    const nuevosProductos = productos.map((producto) => {
+    const newProducts = productos.map((producto) => {
       if (producto.id === id) {
         return { ...producto, cantidad: producto.cantidad + 1 };
       }
       return producto;
     });
-    setProductos(nuevosProductos);
+    setProductos(newProducts);
   };
 
   const disminuirCantidad = (id) => {
-    const nuevosProductos = productos.map((producto) => {
+    const newProducts = productos.map((producto) => {
       if (producto.id === id && producto.cantidad > 0) {
         return { ...producto, cantidad: producto.cantidad - 1 };
       }
       return producto;
     });
-    setProductos(nuevosProductos);
+    setProductos(newProducts);
   };
 
   const actualizarCantidad = (id, cantidad) => {
-    const nuevosProductos = productos.map((producto) => {
+    const newProducts = productos.map((producto) => {
       if (producto.id === id) {
         return { ...producto, cantidad: cantidad };
       }
       return producto;
     });
-    setProductos(nuevosProductos);
+    setProductos(newProducts);
   };
 
   return {
@@ -54,10 +48,10 @@ export function SearchProductsController(props) {
     setSearchData,
     productos,
     setProductos,
-    productosSeleccionados,
+    selectedProducts,
     searching,
     setSearching,
-    setProductosSeleccionados,
+    setselectedProducts,
     agregarProducto,
     aumentarCantidad,
     disminuirCantidad,
