@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Cookies from 'js-cookie';
-export function searchProductsController(props) {
+export function SearchProductsController(props) {
   const [searchData, setSearchData] = useState('');
   const [productos, setProductos] = useState([]);
   const [selectedProducts, setselectedProducts] = useState([]);
