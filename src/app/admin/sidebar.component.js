@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 export default function Sidebar({ dropdownOpen, setSidebarOpen }) {
   const ref = useRef(null);
+  
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
