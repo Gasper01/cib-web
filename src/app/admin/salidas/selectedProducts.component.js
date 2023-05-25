@@ -1,11 +1,11 @@
 import Table from '../Table.component';
-import { selectedProductsController } from './selectedProducts.controller';
+import { SelectedProductsController } from './selectedProducts.controller';
 export default function ProductosSeleccionados({
   selectedProducts,
   setselectedProducts,
 }) {
   const { eliminarProducto, aumentarCantidad, disminuirCantidad } =
-    selectedProductsController(selectedProducts, setselectedProducts);
+    SelectedProductsController(selectedProducts, setselectedProducts);
 
   return (
     <div>

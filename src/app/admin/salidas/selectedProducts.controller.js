@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
-export function selectedProductsController(
+export function SelectedProductsController(
   selectedProducts,
   setselectedProducts
 ) {
