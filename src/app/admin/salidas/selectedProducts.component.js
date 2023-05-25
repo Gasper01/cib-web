@@ -1,6 +1,6 @@
 import Table from '../Table.component';
 import { SelectedProductsController } from './selectedProducts.controller';
-export default function ProductosSeleccionados({
+export default function ProductSelection({
   selectedProducts,
   setselectedProducts,
 }) {

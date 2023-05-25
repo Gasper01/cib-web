@@ -3,11 +3,12 @@ import Datepicker from '../datepicker.component';
 import Dropdown from '../dropdown.component';
 import SearchProducts from './searchProducts.component';
 import { UserProfile } from '@/app/context/User';
-import { OutboundFormState } from './outboundFormState.controller';
+import { outboundFormState } from './outboundFormState.controller';
 import OutbondlongCard from './logCardView.component';
-export default async function OutboundForm() {
+
+export default function OutboundForm() {
   const { formState, setFormState, handleDropdownChange, OnClickSiguiente } =
-    OutboundFormState();
+    outboundFormState();
 
   const countryOptions = [
     { value: 'US', label: 'United States' },
