@@ -12,7 +12,7 @@ export function OutboundFormState() {
   });
 
   useEffect(() => {
-    const productsCookie = Cookies.get('productosSeleccionados');
+    const productsCookie = Cookies.get('selectedProductscookie');
 
     if (productsCookie && JSON.parse(productsCookie).length > 0) {
       const [selectProducto] = JSON.parse(productsCookie);

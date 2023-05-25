@@ -5,7 +5,7 @@ import SearchProducts from './searchProducts.component';
 import { UserProfile } from '@/app/context/User';
 import { OutboundFormState } from './outboundFormState.controller';
 import OutbondlongCard from './logCardView.component';
-export default function OutboundForm() {
+export default async function OutboundForm() {
   const { formState, setFormState, handleDropdownChange, OnClickSiguiente } =
     OutboundFormState();
 

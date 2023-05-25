@@ -21,7 +21,7 @@ export default function LoginController(router) {
       }
       const token = await response.json();
       Cookies.set('token', token, { sameSite: 'none', secure: true });
-      router.replace('/admin');
+      router.push('/admin');
     } catch (error) {
       setErrorMessage(error.message);
     }

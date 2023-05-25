@@ -85,7 +85,7 @@ export default function Header() {
           </div>
         </div>
       </nav>
-      <Sidebar dropdownOpen={SidebarOpen} />
+      <Sidebar dropdownOpen={SidebarOpen} setSidebarOpen={setSidebarOpen} />
     </>
   );
 }

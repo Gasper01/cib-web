@@ -3,7 +3,6 @@ import ProductSelection from './selectedProducts.component';
 import Search from '@/app/lib/search';
 import Searchbotton from '../search.component';
 import Table from '../Table.component';
-import Loading from '../loading';
 import { SearchProductsController } from './searchProducts.controller';
 
 export default function SearchProducts(props) {
@@ -45,7 +44,7 @@ export default function SearchProducts(props) {
         setSearchData={setSearchData}
         searching={searching}
       />
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={'Loading..'}>
         <Table title={'Productos Encontrados'}>
           {productos.map((producto) => (
             <tr
