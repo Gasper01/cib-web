@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import { useState, useEffect } from 'react';
 
-export function outboundFormState() {
+export function OutboundFormState() {
   const [formState, setFormState] = useState({
     startDate: new Date().toISOString().split('T')[0],
     selectedMotorista: '',

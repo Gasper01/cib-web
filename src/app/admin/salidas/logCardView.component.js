@@ -1,4 +1,4 @@
-export default  function outbondlongCard({
+export default function OutbondlongCard({
   children,
   fecha,
   title,
@@ -15,18 +15,18 @@ export default  function outbondlongCard({
         <>{subtitle}</>
       ) : (
         <div>
-        <p className="text-base text-gray-500 sm:text-lg dark:text-gray-400">
-          <span className="text-green-600 block">
-            Fecha: <span className="underline">{fecha}</span>
-          </span>
-          <span className="text-green-600 block">
-            Destino: <span className="underline">{destino}</span>
-          </span>
-          <span className="text-green-600 block">
-            Motorista: <span className="underline">{motorista}</span>
-          </span>
-        </p>
-      </div>
+          <p className="text-base text-gray-500 sm:text-lg dark:text-gray-400">
+            <span className="text-green-600 block">
+              Fecha: <span className="underline">{fecha}</span>
+            </span>
+            <span className="text-green-600 block">
+              Destino: <span className="underline">{destino}</span>
+            </span>
+            <span className="text-green-600 block">
+              Motorista: <span className="underline">{motorista}</span>
+            </span>
+          </p>
+        </div>
       )}
 
       <div className="mx-auto  text-left  grid grid-cols-1 md:grid-cols-1 gap-4 ">
