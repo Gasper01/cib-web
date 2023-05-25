@@ -3,9 +3,9 @@ import ProductSelection from './selectedProducts.component';
 import Search from '@/app/lib/search';
 import Searchbotton from '../search.component';
 import Table from '../Table.component';
-import { searchProductsController } from './searchProducts.controller';
+import { SearchProductsController } from './searchProducts.controller';
 
-export default function searchProducts(props) {
+export default function SearchProducts(props) {
   const {
     searchData,
     setSearchData,
@@ -19,7 +19,7 @@ export default function searchProducts(props) {
     aumentarCantidad,
     disminuirCantidad,
     actualizarCantidad,
-  } = searchProductsController(props);
+  } = SearchProductsController(props);
 
   const onSubmitSearchProducts = async (e) => {
     e.preventDefault();
