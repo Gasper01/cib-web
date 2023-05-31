@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
-import ProductSelection from './selectedProducts.component';
-import Search from '@/app/lib/search';
-import Searchbotton from '../search.component';
-import Table from '../Table.component';
-import { SearchProductsController } from './searchProducts.controller';
+import ProductSelection from './SelectedProducts';
+import Search from '@/lib/Search';
+import Searchbotton from './SearchButton';
+import Table from './Table';
+import { SearchProductsController } from '../controller/SearchProducts';
 
 export default function SearchProducts(props) {
   const {
@@ -27,7 +27,11 @@ export default function SearchProducts(props) {
     try {
       const res = await Search(searchData);
       if (!res.message) {
-        setProductos(res);
+        const productosFormateados = res.map((producto) => ({
+          ...producto,
+          cantidadAdd: 1,
+        }));
+        setProductos(productosFormateados);
       } else {
         setProductos([]);
       }
@@ -75,7 +79,7 @@ export default function SearchProducts(props) {
                   <div>
                     <input
                       type="number"
-                      value={producto.cantidad}
+                      value={producto.cantidadAdd}
                       onChange={(e) =>
                         actualizarCantidad(
                           producto.id,
@@ -85,6 +89,7 @@ export default function SearchProducts(props) {
                       className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
+
                   <button
                     onClick={() => aumentarCantidad(producto.id)}
                     className="p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -104,15 +109,21 @@ export default function SearchProducts(props) {
                 </div>
               </td>
               <td className="px-6 py-4 flex items-center justify-end">
-                {producto.cantidad === 0 ? (
+                {producto.cantidad === 0 || producto.cantidadAdd === 0 ? (
                   <p>Producto agotado</p>
                 ) : (
-                  <button
-                    onClick={() => agregarProducto(producto)}
-                    className="font-medium text-green-600 dark:text-green-600"
-                  >
-                    Agregar
-                  </button>
+                  <>
+                    {producto.cantidadAdd > producto.cantidad ? (
+                      <p>Cantidad Maxima</p>
+                    ) : (
+                      <button
+                        onClick={() => agregarProducto(producto)}
+                        className="font-medium text-green-600 dark:text-green-600"
+                      >
+                        Agregar
+                      </button>
+                    )}
+                  </>
                 )}
               </td>
             </tr>

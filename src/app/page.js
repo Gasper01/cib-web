@@ -1,5 +1,4 @@
-import MyButton from './button';
-import { GetUser } from './lib/getUser';
+import { GetUser } from '../lib/GetUser';
 export default async function Page() {
   const res = await GetUser();
 

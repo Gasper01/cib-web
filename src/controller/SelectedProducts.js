@@ -25,17 +25,25 @@ export function SelectedProductsController(
 
   const aumentarCantidad = (index) => {
     const newselectedProducts = [...selectedProducts];
-    newselectedProducts[index].cantidad += 1;
+    if (
+      newselectedProducts[index].cantidad >
+      newselectedProducts[index].cantidadAdd
+    ) {
+      newselectedProducts[index].cantidadAdd += 1;
 
-    setselectedProducts(newselectedProducts);
-    Cookies.set('selectedProductscookie', JSON.stringify(newselectedProducts));
+      setselectedProducts(newselectedProducts);
+      Cookies.set(
+        'selectedProductscookie',
+        JSON.stringify(newselectedProducts)
+      );
+    }
   };
 
   const disminuirCantidad = (index) => {
     const newselectedProducts = [...selectedProducts];
 
-    if (newselectedProducts[index].cantidad > 0) {
-      newselectedProducts[index].cantidad -= 1;
+    if (newselectedProducts[index].cantidadAdd > 1) {
+      newselectedProducts[index].cantidadAdd -= 1;
 
       setselectedProducts(newselectedProducts);
       Cookies.set(

@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import getlogin from '../lib/login';
+import Getlogin from '../lib/Login';
 import { useState } from 'react';
 
 export default function LoginController(router) {
@@ -14,7 +14,7 @@ export default function LoginController(router) {
     setErrorMessage('');
 
     try {
-      const response = await getlogin(email, password);
+      const response = await Getlogin(email, password);
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.message);

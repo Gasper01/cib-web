@@ -1,5 +1,5 @@
 'use client';
-import LoginController from './login.controller';
+import LoginController from '../controller/Login';
 import { useRouter } from 'next/navigation';
 
 export default function LoginForm() {

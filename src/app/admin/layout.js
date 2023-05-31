@@ -1,13 +1,12 @@
 import '../globals.css';
-import UserContextProvider from '../context/User';
-import Header from './header.component';
-import OutboundForm from './salidas/outboundForm.component';
+import UserContextProvider from '../../context/User';
+import Header from '../../components/Header';
 export default function AdminLayout({ children }) {
   return (
     <>
       <UserContextProvider>
         <Header />
-        <div className="sm:ml-64 sm:py-4 sm:px-4">
+        <div className="md:ml-64 md:py-4 md:px-4">
           <div className="rounded-lg dark:border-gray-700 mt-14">
             {children}
           </div>

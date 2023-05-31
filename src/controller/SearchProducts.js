@@ -16,8 +16,9 @@ export function SearchProductsController(props) {
   const aumentarCantidad = (id) => {
     const newProducts = productos.map((producto) => {
       if (producto.id === id) {
-        return { ...producto, cantidad: producto.cantidad + 1 };
+        return { ...producto, cantidadAdd: producto.cantidadAdd + 1 };
       }
+      console.log(producto.cantidadAdd);
       return producto;
     });
     setProductos(newProducts);
@@ -25,8 +26,8 @@ export function SearchProductsController(props) {
 
   const disminuirCantidad = (id) => {
     const newProducts = productos.map((producto) => {
-      if (producto.id === id && producto.cantidad > 0) {
-        return { ...producto, cantidad: producto.cantidad - 1 };
+      if (producto.id === id && producto.cantidadAdd > 0) {
+        return { ...producto, cantidadAdd: producto.cantidadAdd - 1 };
       }
       return producto;
     });
@@ -36,7 +37,7 @@ export function SearchProductsController(props) {
   const actualizarCantidad = (id, cantidad) => {
     const newProducts = productos.map((producto) => {
       if (producto.id === id) {
-        return { ...producto, cantidad: cantidad };
+        return { ...producto, cantidadAdd: cantidad };
       }
       return producto;
     });

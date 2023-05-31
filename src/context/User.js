@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import verifyUser from '../lib/verifyUser';
+import verifyUser from '../lib/VerifyUser';
 export const UserContext = createContext(null);
 
 export const UserProfile = () => {

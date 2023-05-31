@@ -1,4 +1,4 @@
-export default async function getLogin(email, password) {
+export default async function GetLogin(email, password) {
   const response = await fetch('https://full-api.vercel.app/admin/signIn', {
     method: 'POST',
     cache: 'no-store',

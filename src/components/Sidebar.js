@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 export default function Sidebar({ dropdownOpen, setSidebarOpen }) {
   const ref = useRef(null);
-  
+
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
@@ -19,7 +19,7 @@ export default function Sidebar({ dropdownOpen, setSidebarOpen }) {
     <aside
       ref={ref}
       id="logo-sidebar"
-      className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700 ${
+      className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700 ${
         dropdownOpen ? 'transition-transform -translate-x-full ' : '  '
       }`}
       aria-label="Sidebar"

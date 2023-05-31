@@ -10,11 +10,11 @@ export default function Dropdown(props) {
         value={props.value}
         onChange={props.onChange}
       >
-        <option defaultValue="" value="" />
+        <option key="" value="" />
 
-        {props.options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+        {props.options.map((res) => (
+          <option key={res.value} value={res.label}>
+            {res.label}
           </option>
         ))}
       </select>

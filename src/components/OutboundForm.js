@@ -1,22 +1,21 @@
 'use client';
-import Datepicker from '../datepicker.component';
-import Dropdown from '../dropdown.component';
-import SearchProducts from './searchProducts.component';
-import { UserProfile } from '@/app/context/User';
-import { OutboundFormState } from './outboundFormState.controller';
-import OutbondlongCard from './logCardView.component';
+import Datepicker from './Datepicker';
+import Dropdown from './Dropdown';
+import SearchProducts from './SearchProducts';
+import { UserProfile } from '../context/User';
+import { OutboundFormState } from '../controller/OutboundFormState';
+import OutbondlongCard from './LogCardView';
 
 export default function OutboundForm() {
-  const { formState, setFormState, handleDropdownChange, OnClickSiguiente } =
-    OutboundFormState();
-
-  const countryOptions = [
-    { value: 'US', label: 'United States' },
-    { value: 'CA', label: 'Canada' },
-    { value: 'FR', label: 'France' },
-    { value: 'DE', label: 'Germany' },
-  ];
-
+  const {
+    formState,
+    setFormState,
+    handleDropdownChange,
+    onClickSiguiente,
+    dataDestinations,
+    dataMotoristas,
+    dataLocations,
+  } = OutboundFormState();
   const userProfile = UserProfile();
   const setUser = {};
 
@@ -38,11 +37,11 @@ export default function OutboundForm() {
             <Dropdown
               text={'Selecione un sistema'}
               id="Sistema"
-              value={formState.selectedsistema}
+              value={formState.selectedSistema}
               onChange={(e) =>
-                setFormState({ ...formState, selectedsistema: e.target.value })
+                setFormState({ ...formState, selectedSistema: e.target.value })
               }
-              options={countryOptions}
+              options={dataLocations}
             />
 
             <SearchProducts
@@ -50,7 +49,7 @@ export default function OutboundForm() {
               motorista={formState.selectedMotorista}
               placaVeiculo={formState.selectedLabel}
               destino={formState.selectedDestino}
-              sistema={formState.selectedsistema}
+              sistema={formState.selectedSistema}
               userId={setUser.Iduser}
               username={setUser.user}
             />
@@ -69,13 +68,7 @@ export default function OutboundForm() {
                 setFormState({ ...formState, startDate: e.target.value })
               }
             />
-            <Dropdown
-              text={'Selecione un Motorista'}
-              id="Motorista"
-              value={formState.selectedMotorista}
-              onChange={handleDropdownChange}
-              options={countryOptions}
-            />
+
             <Dropdown
               text={'Selecione un Destino'}
               id="Destino"
@@ -83,12 +76,19 @@ export default function OutboundForm() {
               onChange={(e) =>
                 setFormState({ ...formState, selectedDestino: e.target.value })
               }
-              options={countryOptions}
+              options={dataDestinations}
+            />
+            <Dropdown
+              text={'Selecione un Motorista'}
+              id="Motorista"
+              value={formState.selectedMotorista}
+              onChange={handleDropdownChange}
+              options={dataMotoristas}
             />
 
             <button
               type="button"
-              onClick={OnClickSiguiente}
+              onClick={onClickSiguiente}
               disabled={
                 formState.selectedMotorista === '' ||
                 formState.selectedDestino === ''

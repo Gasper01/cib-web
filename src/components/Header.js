@@ -1,7 +1,7 @@
 'use client';
-import DropdownUserProfile from './dropdownUserProfile.component';
+import DropdownUserProfile from './DropdownUserProfile';
 import { useState, useEffect, useRef } from 'react';
-import Sidebar from './sidebar.component';
+import Sidebar from './Sidebar';
 import Link from 'next/link';
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);

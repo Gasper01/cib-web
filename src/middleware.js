@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import VerifyUser from './app/lib/verifyUser';
+import VerifyUser from './lib/VerifyUser';
 export async function middleware(req) {
   const cookie = req.cookies.get('token')?.value;
 
