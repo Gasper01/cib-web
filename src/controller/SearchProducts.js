@@ -1,16 +1,35 @@
 import { useState } from 'react';
 import Cookies from 'js-cookie';
-export function SearchProductsController(props) {
+import enviarDatos from '@/lib/DbData';
+export function SearchProductsController({
+  fecha,
+  motorista,
+  destino,
+  sistema,
+  userId,
+}) {
   const [searchData, setSearchData] = useState('');
   const [productos, setProductos] = useState([]);
   const [selectedProducts, setselectedProducts] = useState([]);
   const [searching, setSearching] = useState(false);
+  const [selctAdd, setSelectAdd] = useState([]);
+  const [message, setMessage] = useState([]);
 
   const agregarProducto = (producto) => {
-    const productoConProps = { ...producto, ...props };
-    const newselectedProducts = [...selectedProducts, productoConProps];
-    setselectedProducts(newselectedProducts);
-    Cookies.set('selectedProductscookie', JSON.stringify(newselectedProducts));
+    const select = { ...producto, sistema };
+    const produtosselecte = [...selctAdd, select];
+
+    const newProductsAdd = {
+      fecha,
+      motorista,
+      destino,
+      userId,
+      productos: [...produtosselecte],
+    };
+
+    setSelectAdd(produtosselecte);
+    setselectedProducts(newProductsAdd);
+    Cookies.set('selectedProductscookie', JSON.stringify(newProductsAdd));
   };
 
   const aumentarCantidad = (id) => {
@@ -18,7 +37,6 @@ export function SearchProductsController(props) {
       if (producto.id === id) {
         return { ...producto, cantidadAdd: producto.cantidadAdd + 1 };
       }
-      console.log(producto.cantidadAdd);
       return producto;
     });
     setProductos(newProducts);
@@ -44,12 +62,26 @@ export function SearchProductsController(props) {
     setProductos(newProducts);
   };
 
+  const CreateNewsalida = async () => {
+    try {
+      const response = await enviarDatos(selectedProducts);
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+      }
+      Cookies.remove('selectedProductscookie');
+    } catch (error) {
+      setMessage(error.message);
+    }
+  };
+
   return {
     searchData,
     setSearchData,
     productos,
     setProductos,
     selectedProducts,
+    setSelectAdd,
     searching,
     setSearching,
     setselectedProducts,
@@ -57,5 +89,7 @@ export function SearchProductsController(props) {
     aumentarCantidad,
     disminuirCantidad,
     actualizarCantidad,
+    CreateNewsalida,
+    message,
   };
 }

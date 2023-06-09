@@ -1,7 +1,7 @@
 import './globals.css';
 export default function RootLayout({ children}) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <meta charSet="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />

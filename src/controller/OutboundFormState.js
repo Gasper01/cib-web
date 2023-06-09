@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { GetDestinos, GetLocation, GetMotoristas } from '@/lib/GetDataDropdown';
+import { GetDestinos, GetLocation, GetMotoristas } from '@/lib/DbData';
 
 export function OutboundFormState() {
   const initialState = {
@@ -70,19 +70,20 @@ export function OutboundFormState() {
 
   useEffect(() => {
     const productsCookie = Cookies.get('selectedProductscookie');
-
-    if (productsCookie && JSON.parse(productsCookie).length > 0) {
-      const [selectProducto] = JSON.parse(productsCookie);
-      const { destino, fecha, motorista, placaVeiculo } = selectProducto;
-
-      setFormState((prevState) => ({
-        ...prevState,
-        startDate: fecha,
-        selectedDestino: destino,
-        selectedMotorista: motorista,
-        selectedLabel: placaVeiculo,
-        showNextForm: true,
-      }));
+    if (productsCookie) {
+      const selectProducto = JSON.parse(productsCookie);
+      const { destino, fecha, motorista, placaVeiculo, productos } =
+        selectProducto ?? {};
+      if (productos?.length) {
+        setFormState((prevState) => ({
+          ...prevState,
+          startDate: fecha,
+          selectedDestino: destino,
+          selectedMotorista: motorista,
+          selectedLabel: placaVeiculo,
+          showNextForm: true,
+        }));
+      }
     }
   }, []);
 

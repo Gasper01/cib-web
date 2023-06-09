@@ -1,14 +1,9 @@
-import { GetUser } from '../lib/GetUser';
-export default async function Page() {
-  const res = await GetUser();
 
+export default  function Page() {
+  
   return (
     <main>
-      <ul>
-        {res.map((data) => (
-          <li key={data.id}>{data.username}</li>
-        ))}
-      </ul>
+     <h1>hola</h1>
     </main>
   );
 }

@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import ProductSelection from './SelectedProducts';
-import Search from '@/lib/Search';
+import {Search} from '@/lib/DbData';
 import Searchbotton from './SearchButton';
 import Table from './Table';
 import { SearchProductsController } from '../controller/SearchProducts';
@@ -13,12 +13,15 @@ export default function SearchProducts(props) {
     setProductos,
     selectedProducts,
     searching,
+    setSelectAdd,
     setSearching,
     setselectedProducts,
     agregarProducto,
     aumentarCantidad,
     disminuirCantidad,
     actualizarCantidad,
+    CreateNewsalida,
+    message,
   } = SearchProductsController(props);
 
   const onSubmitSearchProducts = async (e) => {
@@ -27,8 +30,8 @@ export default function SearchProducts(props) {
     try {
       const res = await Search(searchData);
       if (!res.message) {
-        const productosFormateados = res.map((producto) => ({
-          ...producto,
+        const productosFormateados = res.map((productos) => ({
+          ...productos,
           cantidadAdd: 1,
         }));
         setProductos(productosFormateados);
@@ -50,18 +53,16 @@ export default function SearchProducts(props) {
       />
       <Suspense fallback={'Loading..'}>
         <Table title={'Productos Encontrados'}>
-          {productos.map((producto) => (
+          {productos.map((productos) => (
             <tr
-              key={producto.id}
-              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              key={productos.id}
+              className="font-semibold text-gray-900 bg-white border-b dark:text-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
-              <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                {producto.nombre}
-              </td>
-              <td className="px-6 py-4 justify-end space-x-3">
-                <div className="flex items-center justify-end space-x-3">
+              <td className="px-6 py-4">{productos.nombre}</td>
+              <td className="px-6 py-4">
+                <div className="flex justify-center space-x-3">
                   <button
-                    onClick={() => disminuirCantidad(producto.id)}
+                    onClick={() => disminuirCantidad(productos.id)}
                     className="p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                     type="button"
                   >
@@ -79,19 +80,19 @@ export default function SearchProducts(props) {
                   <div>
                     <input
                       type="number"
-                      value={producto.cantidadAdd}
+                      value={productos.cantidadAdd}
                       onChange={(e) =>
                         actualizarCantidad(
-                          producto.id,
+                          productos.id,
                           parseInt(e.target.value)
                         )
                       }
-                      className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 text-center dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
 
                   <button
-                    onClick={() => aumentarCantidad(producto.id)}
+                    onClick={() => aumentarCantidad(productos.id)}
                     className="p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                     type="button"
                   >
@@ -108,16 +109,16 @@ export default function SearchProducts(props) {
                   </button>
                 </div>
               </td>
-              <td className="px-6 py-4 flex items-center justify-end">
-                {producto.cantidad === 0 || producto.cantidadAdd === 0 ? (
+              <td className="flex justify-end px-6 py-4">
+                {productos.cantidad === 0 || productos.cantidadAdd === 0 ? (
                   <p>Producto agotado</p>
                 ) : (
                   <>
-                    {producto.cantidadAdd > producto.cantidad ? (
+                    {productos.cantidadAdd > productos.cantidad ? (
                       <p>Cantidad Maxima</p>
                     ) : (
                       <button
-                        onClick={() => agregarProducto(producto)}
+                        onClick={() => agregarProducto(productos)}
                         className="font-medium text-green-600 dark:text-green-600"
                       >
                         Agregar
@@ -134,6 +135,9 @@ export default function SearchProducts(props) {
       <ProductSelection
         selectedProducts={selectedProducts}
         setselectedProducts={setselectedProducts}
+        setSelectAdd={setSelectAdd}
+        CreateNewsalida={CreateNewsalida}
+        message={message}
       />
     </>
   );

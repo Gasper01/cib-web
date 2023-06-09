@@ -1,28 +1,31 @@
-'use client';
-import { createContext, useContext, useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
-import verifyUser from '../lib/VerifyUser';
-export const UserContext = createContext(null);
+"use client";
+import { createContext, useContext, useEffect, useState } from "react";
 
+export const UserContext = createContext(null);
 export const UserProfile = () => {
   return useContext(UserContext);
 };
 
 export default function UserContextProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const token = Cookies.get('token');
+  const [user, setUser] = useState([]);
+  const [salidas, setSalidas] = useState([]);
 
   useEffect(() => {
-    async function getUser() {
-      const userdata = await verifyUser(token);
-      setUser(userdata);
-    }
-    if (token) {
-      getUser();
-    } else {
-      setUser(null);
-    }
-  }, [token]);
+    const fetchData = async () => {
+      const { GetSalidas, VerifyUser } = await import("@/lib/DbData");
+      const [salidasData, userData] = await Promise.all([
+        GetSalidas(),
+        VerifyUser(),
+      ]);
+      setSalidas(salidasData);
+      setUser(userData);
+    };
+    fetchData();
+  }, []);
 
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ salidas, user }}>
+      {children}
+    </UserContext.Provider>
+  );
 }

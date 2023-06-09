@@ -3,52 +3,72 @@ import Cookies from 'js-cookie';
 
 export function SelectedProductsController(
   selectedProducts,
-  setselectedProducts
+  setselectedProducts,
+  setSelectAdd
 ) {
   useEffect(() => {
     const selectedProductsCookie = Cookies.get('selectedProductscookie');
 
     if (selectedProductsCookie) {
+      const productoAdd = JSON.parse(selectedProductsCookie);
+      setSelectAdd(productoAdd.productos);
       setselectedProducts(JSON.parse(selectedProductsCookie));
     } else {
+      setSelectAdd([]);
       setselectedProducts([]);
     }
   }, [setselectedProducts]);
 
   const eliminarProducto = (index) => {
-    const newselectedProducts = [...selectedProducts];
-    newselectedProducts.splice(index, 1);
-
-    setselectedProducts(newselectedProducts);
-    Cookies.set('selectedProductscookie', JSON.stringify(newselectedProducts));
+    const newProductos = [...selectedProducts.productos];
+    newProductos.splice(index, 1);
+    const updatedSelectedProducts = {
+      ...selectedProducts,
+      productos: newProductos,
+    };
+    setSelectAdd(newProductos);
+    setselectedProducts(updatedSelectedProducts);
+    Cookies.set(
+      'selectedProductscookie',
+      JSON.stringify(updatedSelectedProducts)
+    );
   };
 
   const aumentarCantidad = (index) => {
-    const newselectedProducts = [...selectedProducts];
+    const newSelectedProducts = [...selectedProducts.productos];
     if (
-      newselectedProducts[index].cantidad >
-      newselectedProducts[index].cantidadAdd
+      newSelectedProducts[index].cantidad >
+      newSelectedProducts[index].cantidadAdd
     ) {
-      newselectedProducts[index].cantidadAdd += 1;
+      newSelectedProducts[index].cantidadAdd += 1;
 
-      setselectedProducts(newselectedProducts);
+      const newSelectedProductsData = {
+        ...selectedProducts,
+        productos: newSelectedProducts,
+      };
+
+      setselectedProducts(newSelectedProductsData);
       Cookies.set(
         'selectedProductscookie',
-        JSON.stringify(newselectedProducts)
+        JSON.stringify(newSelectedProductsData)
       );
     }
   };
 
   const disminuirCantidad = (index) => {
-    const newselectedProducts = [...selectedProducts];
+    const newSelectedProducts = [...selectedProducts.productos];
+    if (newSelectedProducts[index].cantidadAdd > 1) {
+      newSelectedProducts[index].cantidadAdd -= 1;
 
-    if (newselectedProducts[index].cantidadAdd > 1) {
-      newselectedProducts[index].cantidadAdd -= 1;
+      const newSelectedProductsData = {
+        ...selectedProducts,
+        productos: newSelectedProducts,
+      };
 
-      setselectedProducts(newselectedProducts);
+      setselectedProducts(newSelectedProductsData);
       Cookies.set(
         'selectedProductscookie',
-        JSON.stringify(newselectedProducts)
+        JSON.stringify(newSelectedProductsData)
       );
     }
   };

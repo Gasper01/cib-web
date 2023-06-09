@@ -3,26 +3,37 @@ import { SelectedProductsController } from '../controller/SelectedProducts';
 export default function ProductSelection({
   selectedProducts,
   setselectedProducts,
+  setSelectAdd,
+  CreateNewsalida,
+  message,
 }) {
   const { eliminarProducto, aumentarCantidad, disminuirCantidad } =
-    SelectedProductsController(selectedProducts, setselectedProducts);
-
+    SelectedProductsController(
+      selectedProducts,
+      setselectedProducts,
+      setSelectAdd
+    );
   return (
     <div>
+      <span className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-red-500">
+        {message}
+      </span>
       <Table title={'Productos Selecionados'}>
-        {selectedProducts
-          .slice()
+        {selectedProducts?.productos
+          ?.slice()
           .reverse()
           .map((products, index, array) => (
             <tr
               key={index}
-              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              className="font-semibold text-gray-900 dark:text-white bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
-              <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                {products.nombre}
+              <td className="px-6 py-4">
+                {products.nombre} /
+                <span className=" text-yellow-300">{products.sistema}</span>
               </td>
-              <td className="px-6 py-4 justify-end space-x-3">
-                <div className="flex items-center justify-end space-x-3">
+
+              <td className="px-6 py-4 ">
+                <div className="flex justify-center text-center space-x-3">
                   <button
                     onClick={() => disminuirCantidad(array.length - 1 - index)}
                     className="p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -62,7 +73,7 @@ export default function ProductSelection({
                   </button>
                 </div>
               </td>
-              <td className="px-6 py-4 flex items-center justify-end">
+              <td className="px-6 py-4 flex  justify-end">
                 <button
                   onClick={() => eliminarProducto(array.length - 1 - index)}
                   className="font-medium text-red-600 dark:text-red-500"
@@ -73,6 +84,15 @@ export default function ProductSelection({
             </tr>
           ))}
       </Table>
+      {selectedProducts?.productos?.length !== 0 && (
+        <button
+          type="button"
+          className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          onClick={CreateNewsalida}
+        >
+          Enviar Datos
+        </button>
+      )}
     </div>
   );
 }
