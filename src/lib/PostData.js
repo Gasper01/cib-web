@@ -42,5 +42,5 @@ async function fetchWithOption(
 }
 
 export async function CreateSalida(selectedProducts) {
-  return fetchWithOption(`${TextUrl}/salidas/`, "POST", selectedProducts, true);
+  return fetchWithOption(`${baseURL}/salidas/`, "POST", selectedProducts, true);
 }
