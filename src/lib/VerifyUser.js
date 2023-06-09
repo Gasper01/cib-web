@@ -4,7 +4,7 @@ export async function VerifyUser(cookie) {
   if (tokenCache[cookie]) {
     return tokenCache[cookie];
   }
-  const response = await fetch("http://localhost:400/user/verifyuser", {
+  const response = await fetch("https://full-api.vercel.app/user/verifyuser", {
     cache: "no-store",
     headers: {
       Origin: "https://cib-web.vercel.app",

@@ -1,9 +1,9 @@
-import { Suspense } from 'react';
-import ProductSelection from './SelectedProducts';
-import {Search} from '@/lib/DbData';
-import Searchbotton from './SearchButton';
-import Table from './Table';
-import { SearchProductsController } from '../controller/SearchProducts';
+import { Suspense } from "react";
+import ProductSelection from "./SelectedProducts";
+import { Search } from "@/lib/GetData";
+import Searchbotton from "./SearchButton";
+import Table from "./Table";
+import { SearchProductsController } from "../controller/SearchProducts";
 
 export default function SearchProducts(props) {
   const {
@@ -51,8 +51,8 @@ export default function SearchProducts(props) {
         setSearchData={setSearchData}
         searching={searching}
       />
-      <Suspense fallback={'Loading..'}>
-        <Table title={'Productos Encontrados'}>
+      <Suspense fallback={"Loading.."}>
+        <Table title={"Productos Encontrados"}>
           {productos.map((productos) => (
             <tr
               key={productos.id}

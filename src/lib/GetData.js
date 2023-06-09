@@ -63,8 +63,7 @@ export async function GetSalidas() {
 }
 
 export async function GetSalidasByid(Id) {
-  console.log(Id);
-  return fetchWithOption(`${TextUrl}/salidas/${Id}`, "GET", null, false);
+  return fetchWithOption(`${baseURL}/salidas/${Id}`, "GET", null, false);
 }
 
 export async function GetUser() {
@@ -86,5 +85,5 @@ export async function VerifyUser() {
 
 export async function GetLogin(email, password) {
   const requestBody = { email, password };
-  return fetchWithOption(`${TextUrl}/admin/signIn`, "POST", requestBody, false);
+  return fetchWithOption(`${baseURL}/admin/signIn`, "POST", requestBody, false);
 }

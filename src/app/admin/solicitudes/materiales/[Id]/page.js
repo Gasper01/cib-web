@@ -1,5 +1,5 @@
 import OutbondlongCard from "@/components/LogCardView";
-import { GetSalidasByid } from "@/lib/DbData";
+import { GetSalidasByid } from "@/lib/GetData";
 
 export default async function ListaMateriales({ params }) {
   const { Id } = params;

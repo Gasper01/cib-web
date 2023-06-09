@@ -1,15 +1,15 @@
-import Cookies from 'js-cookie';
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { GetDestinos, GetLocation, GetMotoristas } from '@/lib/DbData';
+import Cookies from "js-cookie";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { GetDestinos, GetLocation, GetMotoristas } from "@/lib/GetData";
 
 export function OutboundFormState() {
   const initialState = {
-    startDate: new Date().toISOString().split('T')[0],
-    selectedMotorista: '',
-    selectedDestino: '',
-    selectedLabel: '',
+    startDate: new Date().toISOString().split("T")[0],
+    selectedMotorista: "",
+    selectedDestino: "",
+    selectedLabel: "",
     showNextForm: false,
-    selectedSistema: '',
+    selectedSistema: "",
     datadestino: [],
     datamotorista: [],
     datalocation: [],
@@ -69,7 +69,7 @@ export function OutboundFormState() {
   }, [formState.selectedDestino]);
 
   useEffect(() => {
-    const productsCookie = Cookies.get('selectedProductscookie');
+    const productsCookie = Cookies.get("selectedProductscookie");
     if (productsCookie) {
       const selectProducto = JSON.parse(productsCookie);
       const { destino, fecha, motorista, placaVeiculo, productos } =

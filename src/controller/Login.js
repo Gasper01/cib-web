@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { GetLogin } from "@/lib/DbData";
+import { GetLogin } from "@/lib/GetData";
 import { useState } from "react";
 
 export default function LoginController(router) {
@@ -24,7 +24,6 @@ export default function LoginController(router) {
       Cookies.set("token", token, { sameSite: "none", secure: true });
       router.push("/admin");
     } catch (error) {
-      console.log(error);
       return { error: "server errror" };
     }
     setLoading(false);

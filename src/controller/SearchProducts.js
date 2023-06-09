@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import Cookies from 'js-cookie';
-import enviarDatos from '@/lib/DbData';
+import { useState } from "react";
+import Cookies from "js-cookie";
+import { CreateSalida } from "@/lib/PostData";
 export function SearchProductsController({
   fecha,
   motorista,
@@ -8,7 +8,7 @@ export function SearchProductsController({
   sistema,
   userId,
 }) {
-  const [searchData, setSearchData] = useState('');
+  const [searchData, setSearchData] = useState("");
   const [productos, setProductos] = useState([]);
   const [selectedProducts, setselectedProducts] = useState([]);
   const [searching, setSearching] = useState(false);
@@ -29,7 +29,7 @@ export function SearchProductsController({
 
     setSelectAdd(produtosselecte);
     setselectedProducts(newProductsAdd);
-    Cookies.set('selectedProductscookie', JSON.stringify(newProductsAdd));
+    Cookies.set("selectedProductscookie", JSON.stringify(newProductsAdd));
   };
 
   const aumentarCantidad = (id) => {
@@ -64,12 +64,12 @@ export function SearchProductsController({
 
   const CreateNewsalida = async () => {
     try {
-      const response = await enviarDatos(selectedProducts);
+      const response = await CreateSalida(selectedProducts);
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.message);
       }
-      Cookies.remove('selectedProductscookie');
+      Cookies.remove("selectedProductscookie");
     } catch (error) {
       setMessage(error.message);
     }
