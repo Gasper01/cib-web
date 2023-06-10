@@ -1,8 +1,8 @@
-'use client';
-import { UserProfile } from '@/context/User';
-import Link from 'next/link';
+"use client";
+import { UserProfile } from "@/context/User";
+import Link from "next/link";
 export default function Solicitudes() {
-  const {salidas} = UserProfile();
+  const { salidas } = UserProfile();
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-xs text-left text-gray-500 dark:text-gray-400">
@@ -39,7 +39,7 @@ export default function Solicitudes() {
                   className="font-medium text-green-600 dark:text-green-600"
                   href={`/admin/solicitudes/materiales/${res.id}`}
                 >
-                  Agregar
+                  Ver
                 </Link>
               </td>
             </tr>
