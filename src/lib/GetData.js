@@ -59,15 +59,15 @@ export async function GetLocation(search) {
 }
 
 export async function GetSalidas() {
-  return fetchWithOption(`${TextUrl}/salidas/`, "GET", null, false);
+  return fetchWithOption(`${baseURL}/salidas/`, "GET", null, false);
 }
 
 export async function GetSalidasByid(Id) {
-  return fetchWithOption(`${TextUrl}/salidas/${Id}`, "GET", null, false);
+  return fetchWithOption(`${baseURL}/salidas/${Id}`, "GET", null, false);
 }
 export async function GetSalidasUserById(Id, page) {
   return fetchWithOption(
-    `${TextUrl}/salidas/user/${Id}/${page}`,
+    `${baseURL}/salidas/user/${Id}/${page}`,
     "GET",
     null,
     false
