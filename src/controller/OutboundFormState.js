@@ -7,7 +7,6 @@ export function OutboundFormState() {
     startDate: new Date().toISOString().split("T")[0],
     selectedMotorista: "",
     selectedDestino: "",
-    selectedLabel: "",
     showNextForm: false,
     selectedSistema: "",
     datadestino: [],
@@ -16,16 +15,6 @@ export function OutboundFormState() {
   };
 
   const [formState, setFormState] = useState(initialState);
-
-  const handleDropdownChange = useCallback((event) => {
-    const { value, selectedIndex } = event.target;
-
-    setFormState((prevState) => ({
-      ...prevState,
-      selectedMotorista: value,
-      selectedLabel: event.target[selectedIndex].text,
-    }));
-  }, []);
 
   const onClickSiguiente = useCallback(() => {
     setFormState((prevState) => ({
@@ -72,15 +61,13 @@ export function OutboundFormState() {
     const productsCookie = Cookies.get("selectedProductscookie");
     if (productsCookie) {
       const selectProducto = JSON.parse(productsCookie);
-      const { destino, fecha, motorista, placaVeiculo, productos } =
-        selectProducto ?? {};
+      const { destino, fecha, motorista, productos } = selectProducto ?? {};
       if (productos?.length) {
         setFormState((prevState) => ({
           ...prevState,
           startDate: fecha,
           selectedDestino: destino,
           selectedMotorista: motorista,
-          selectedLabel: placaVeiculo,
           showNextForm: true,
         }));
       }
@@ -113,13 +100,23 @@ export function OutboundFormState() {
     [formState.datalocation]
   );
 
+  const Newsolicitud = () => {
+    Cookies.remove("selectedProductscookie");
+    setFormState((prevState) => ({
+      ...prevState,
+      selectedMotorista: "",
+      selectedDestino: "",
+      showNextForm: false,
+      selectedSistema: "",
+    }));
+  };
   return {
     formState,
     setFormState,
-    handleDropdownChange,
     onClickSiguiente,
     dataDestinations,
     dataMotoristas,
     dataLocations,
+    Newsolicitud,
   };
 }

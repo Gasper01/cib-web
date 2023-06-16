@@ -17,10 +17,12 @@ export default function SearchProducts(props) {
     setSearching,
     setselectedProducts,
     agregarProducto,
+    agregarProductoEdiccion,
     aumentarCantidad,
     disminuirCantidad,
     actualizarCantidad,
     CreateNewsalida,
+    UpdateSalidas,
     message,
   } = SearchProductsController(props);
 
@@ -117,12 +119,25 @@ export default function SearchProducts(props) {
                     {productos.cantidadAdd > productos.cantidad ? (
                       <p>Cantidad Maxima</p>
                     ) : (
-                      <button
-                        onClick={() => agregarProducto(productos)}
-                        className="font-medium text-green-600 dark:text-green-600"
-                      >
-                        Agregar
-                      </button>
+                      <>
+                        {typeof selectedProducts.aprobada === "undefined" && (
+                          <button
+                            onClick={() => agregarProducto(productos)}
+                            className="font-medium text-green-600 dark:text-green-600"
+                          >
+                            Agregar
+                          </button>
+                        )}
+
+                        {selectedProducts.aprobada === false && (
+                          <button
+                            onClick={() => agregarProductoEdiccion(productos)}
+                            className="font-medium text-green-600 dark:text-green-600"
+                          >
+                            Agregar
+                          </button>
+                        )}
+                      </>
                     )}
                   </>
                 )}
@@ -137,6 +152,8 @@ export default function SearchProducts(props) {
         setselectedProducts={setselectedProducts}
         setSelectAdd={setSelectAdd}
         CreateNewsalida={CreateNewsalida}
+        UpdateSalidas={UpdateSalidas}
+        searching={searching}
         message={message}
       />
     </>

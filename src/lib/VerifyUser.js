@@ -1,4 +1,4 @@
-export const tokenCache = {};
+let tokenCache = {};
 export async function VerifyUser(cookie) {
   // Verificar si el token ya está en caché
   if (tokenCache[cookie]) {

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { CreateSalida } from "@/lib/PostData";
+import { useRouter } from "next/navigation";
+import { UpdateSalidasById } from "@/lib/PutAndDeleteData";
+
 export function SearchProductsController({
   fecha,
   motorista,
@@ -14,6 +17,7 @@ export function SearchProductsController({
   const [searching, setSearching] = useState(false);
   const [selctAdd, setSelectAdd] = useState([]);
   const [message, setMessage] = useState([]);
+  const router = useRouter();
 
   const agregarProducto = (producto) => {
     const select = { ...producto, sistema };
@@ -24,6 +28,23 @@ export function SearchProductsController({
       motorista,
       destino,
       userId,
+      productos: [...produtosselecte],
+    };
+
+    setSelectAdd(produtosselecte);
+    setselectedProducts(newProductsAdd);
+    Cookies.set("selectedProductscookie", JSON.stringify(newProductsAdd));
+  };
+  const agregarProductoEdiccion = (producto) => {
+    const select = { ...producto, sistema };
+    const produtosselecte = [...selctAdd, select];
+
+    const newProductsAdd = {
+      id: selectedProducts.id,
+      aprobada: false,
+      fecha,
+      motorista,
+      destino,
       productos: [...produtosselecte],
     };
 
@@ -64,13 +85,34 @@ export function SearchProductsController({
 
   const CreateNewsalida = async () => {
     try {
+      setSearching(true);
       const response = await CreateSalida(selectedProducts);
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.message);
       }
       Cookies.remove("selectedProductscookie");
+      router.push("/admin");
     } catch (error) {
+      setSearching(false);
+      setMessage(error.message);
+    }
+  };
+  const UpdateSalidas = async () => {
+    try {
+      setSearching(true);
+      const response = await UpdateSalidasById(
+        selectedProducts.id,
+        selectedProducts
+      );
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+      }
+      router.push(`/admin/solicitudes/materiales/${selectedProducts.id}`);
+      Cookies.remove("selectedProductscookie");
+    } catch (error) {
+      setSearching(false);
       setMessage(error.message);
     }
   };
@@ -86,10 +128,12 @@ export function SearchProductsController({
     setSearching,
     setselectedProducts,
     agregarProducto,
+    agregarProductoEdiccion,
     aumentarCantidad,
     disminuirCantidad,
     actualizarCantidad,
     CreateNewsalida,
+    UpdateSalidas,
     message,
   };
 }

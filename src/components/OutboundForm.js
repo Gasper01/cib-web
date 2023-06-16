@@ -1,5 +1,6 @@
 "use client";
 import Datepicker from "./Datepicker";
+import Link from "next/link";
 import Dropdown from "./Dropdown";
 import SearchProducts from "./SearchProducts";
 import { UserProfile } from "../context/User";
@@ -10,26 +11,44 @@ export default function OutboundForm() {
   const {
     formState,
     setFormState,
-    handleDropdownChange,
     onClickSiguiente,
     dataDestinations,
     dataMotoristas,
     dataLocations,
+    Newsolicitud,
   } = OutboundFormState();
   const { user } = UserProfile();
   const setUser = {};
 
   if (user !== null) {
-    const { id, username } = user;
+    const { id } = user;
     setUser.Iduser = id;
-    setUser.user = username;
   }
   return (
     <>
       {formState.showNextForm ? (
         <>
+          <Link
+            href="/admin/salidas"
+            onClick={Newsolicitud}
+            className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <svg
+              className="flex-shrink-0 w-6 h-6 "
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M8.58598 4.58594L16.0003 12.0002L8.58615 19.4144L8.58608 13.0003L3.00002 13.0004L3 11.0004L8.58605 11.0003L8.58598 4.58594ZM18.0001 19.0002L18.0001 5.00018H20.0001L20.0001 19.0002H18.0001Z"
+                fill="rgba(31,179,33,1)"
+              ></path>
+            </svg>
+            <span className="flex-1 ml-3 whitespace-nowrap">
+              Comenzar una Nueva Solicitud
+            </span>
+          </Link>
           <OutbondlongCard
-            title={"Encabezados del Despacho"}
+            title={"Encabezados de la Solicitud"}
             fecha={formState.startDate}
             motorista={formState.selectedMotorista}
             destino={formState.selectedDestino}
@@ -47,18 +66,16 @@ export default function OutboundForm() {
             <SearchProducts
               fecha={formState.startDate}
               motorista={formState.selectedMotorista}
-              placaVeiculo={formState.selectedLabel}
               destino={formState.selectedDestino}
               sistema={formState.selectedSistema}
               userId={setUser.Iduser}
-              username={setUser.user}
             />
           </OutbondlongCard>
         </>
       ) : (
         <>
           <OutbondlongCard
-            title={"Despacho de materiales"}
+            title={"Solicitud de materiales"}
             subtitle={" Optimiza la gestión de materiales con estos pasos."}
           >
             <Datepicker
@@ -82,7 +99,12 @@ export default function OutboundForm() {
               text={"Selecione un Motorista"}
               id="Motorista"
               value={formState.selectedMotorista}
-              onChange={handleDropdownChange}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  selectedMotorista: e.target.value,
+                })
+              }
               options={dataMotoristas}
             />
 

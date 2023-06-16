@@ -41,13 +41,18 @@ async function fetchWithOption(
   }
 }
 
-export async function CreateSalida(selectedProducts) {
-  return fetchWithOption(`${TextUrl}/salidas/`, "POST", selectedProducts, true);
-}
-export async function AprobarSalida(IdSalida) {
+export async function UpdateSalidasById(Idsalida, selectedProducts) {
   return fetchWithOption(
-    `${TextUrl}/salidas/aprobar/${IdSalida}`,
-    "POST",
+    `${TextUrl}/salidas/${Idsalida}`,
+    "PUT",
+    selectedProducts,
+    true
+  );
+}
+export async function DeleteSalidasById(Idsalida) {
+  return fetchWithOption(
+    `${TextUrl}/salidas/${Idsalida}`,
+    "DELETE",
     null,
     true
   );
