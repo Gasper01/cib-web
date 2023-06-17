@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { UserProfile } from "@/context/User";
 export default function Notyfi() {
-  const { salidas, user } = UserProfile();
+  const { user, salidas } = UserProfile();
 
   return (
     <>

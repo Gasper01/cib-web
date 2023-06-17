@@ -9,22 +9,35 @@ export const UserProfile = () => {
 export default function UserContextProvider({ children }) {
   const [user, setUser] = useState([]);
   const [salidas, setSalidas] = useState([]);
+  const [salidasChange, setSalidasChange] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { GetSalidas, VerifyUser } = await import("@/lib/GetData");
-      const [salidasData, userData] = await Promise.all([
-        GetSalidas(),
+      const { VerifyUser, GetSalidas } = await import("@/lib/GetData");
+      const [userData, salidasData] = await Promise.all([
         VerifyUser(),
+        GetSalidas(),
       ]);
-      setSalidas(salidasData);
       setUser(userData);
+      setSalidas(salidasData);
     };
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (salidasChange) {
+      const fetchData = async () => {
+        const { GetSalidas } = await import("@/lib/GetData");
+        const [salidasData] = await Promise.all([GetSalidas()]);
+        setSalidas(salidasData);
+        setSalidasChange(false);
+      };
+      fetchData();
+    }
+  }, [salidasChange]);
+
   return (
-    <UserContext.Provider value={{ salidas, user }}>
+    <UserContext.Provider value={{ salidas, user, setSalidasChange }}>
       {children}
     </UserContext.Provider>
   );

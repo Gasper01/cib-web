@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { CreateSalida } from "@/lib/PostData";
 import { useRouter } from "next/navigation";
 import { UpdateSalidasById } from "@/lib/PutAndDeleteData";
-
+import { UserProfile } from "@/context/User";
 export function SearchProductsController({
   fecha,
   motorista,
@@ -18,7 +18,7 @@ export function SearchProductsController({
   const [selctAdd, setSelectAdd] = useState([]);
   const [message, setMessage] = useState([]);
   const router = useRouter();
-
+  const { setSalidasChange } = UserProfile();
   const agregarProducto = (producto) => {
     const select = { ...producto, sistema };
     const produtosselecte = [...selctAdd, select];
@@ -91,8 +91,10 @@ export function SearchProductsController({
         const error = await response.json();
         throw new Error(error.message);
       }
+
       Cookies.remove("selectedProductscookie");
       router.push("/admin");
+      setSalidasChange(true);
     } catch (error) {
       setSearching(false);
       setMessage(error.message);
@@ -109,8 +111,10 @@ export function SearchProductsController({
         const error = await response.json();
         throw new Error(error.message);
       }
+
       router.push(`/admin/solicitudes/materiales/${selectedProducts.id}`);
       Cookies.remove("selectedProductscookie");
+      setSalidasChange(true);
     } catch (error) {
       setSearching(false);
       setMessage(error.message);
