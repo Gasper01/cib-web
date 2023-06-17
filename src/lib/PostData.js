@@ -42,11 +42,11 @@ async function fetchWithOption(
 }
 
 export async function CreateSalida(selectedProducts) {
-  return fetchWithOption(`${TextUrl}/salidas/`, "POST", selectedProducts, true);
+  return fetchWithOption(`${baseURL}/salidas/`, "POST", selectedProducts, true);
 }
 export async function AprobarSalida(IdSalida) {
   return fetchWithOption(
-    `${TextUrl}/salidas/aprobar/${IdSalida}`,
+    `${baseURL}/salidas/aprobar/${IdSalida}`,
     "POST",
     null,
     true
