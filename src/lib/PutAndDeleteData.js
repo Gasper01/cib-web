@@ -43,7 +43,7 @@ async function fetchWithOption(
 
 export async function UpdateSalidasById(Idsalida, selectedProducts) {
   return fetchWithOption(
-    `${TextUrl}/salidas/${Idsalida}`,
+    `${baseURL}/salidas/${Idsalida}`,
     "PUT",
     selectedProducts,
     true
@@ -51,7 +51,7 @@ export async function UpdateSalidasById(Idsalida, selectedProducts) {
 }
 export async function DeleteSalidasById(Idsalida) {
   return fetchWithOption(
-    `${TextUrl}/salidas/${Idsalida}`,
+    `${baseURL}/salidas/${Idsalida}`,
     "DELETE",
     null,
     true
