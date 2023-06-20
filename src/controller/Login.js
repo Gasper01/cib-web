@@ -1,7 +1,6 @@
 import Cookies from "js-cookie";
 import { GetLogin } from "@/lib/GetData";
 import { useState } from "react";
-
 export default function LoginController(router) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,9 +19,8 @@ export default function LoginController(router) {
         setLoading(false);
         return setErrorMessage(token.message);
       }
-
-      Cookies.set("token", token, { sameSite: "none", secure: true });
       router.push("/admin");
+      Cookies.set("token", token, { sameSite: "none", secure: true });
     } catch (error) {
       return { error: "server errror" };
     }
