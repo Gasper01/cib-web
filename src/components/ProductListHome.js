@@ -2,6 +2,7 @@
 import { ProductsData } from "@/context/Products";
 import { Suspense } from "react";
 import LoadingSkeleton from "./LoadingSkeleton";
+import Image from "next/image";
 export default function ProductListHome() {
   const { products } = ProductsData();
   return (
@@ -12,9 +13,11 @@ export default function ProductListHome() {
             {products.map((res) => (
               <a key={res.id} href="#" className="group">
                 <div className="w-full overflow-hidden bg-gray-200 rounded-lg aspect-h-1 aspect-w-1 xl:aspect-h-8 xl:aspect-w-7">
-                  <img
+                  <Image
                     src={res.ImgUrl}
                     alt={res.nombre}
+                    width={450}
+                    height={450}
                     className="object-cover object-center w-full h-full group-hover:opacity-75"
                   />
                 </div>

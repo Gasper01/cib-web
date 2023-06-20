@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 export default function HeadersHome() {
   const [isOpen, setOpen] = useState(false);
   const opciones = [{ label: "Videos" }, { label: "Contato" }];
@@ -9,8 +10,10 @@ export default function HeadersHome() {
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
           <Link href="/" className="flex items-center">
-            <img
+            <Image
               src="/casha.png"
+              width={132}
+              height={132}
               className="w-8 h-8 mr-3 rounded-full "
               alt="Flowbite Logo"
             />

@@ -3,6 +3,7 @@ import DropdownUserProfile from "./DropdownUserProfile";
 import { useState, useEffect, useRef } from "react";
 import Sidebar from "./Sidebar";
 import Notyfi from "./Notyfi";
+import Image from "next/image";
 import Link from "next/link";
 import { UserProfile } from "@/context/User";
 export default function Header() {
@@ -91,7 +92,7 @@ export default function Header() {
                     aria-expanded="false"
                   >
                     {user.imgUrl ? (
-                      <img
+                      <Image
                         className="w-8 h-8 rounded-full"
                         src={user.imgUrl}
                         alt={user.username}
