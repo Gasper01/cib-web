@@ -14,7 +14,6 @@ export default function Page() {
               <Allcategory />
               <SearchProductsHome />
             </div>
-
             <h2 className="py-8 text-2xl font-bold tracking-tight text-gray-900">
               Lista de Productos
             </h2>
