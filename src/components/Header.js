@@ -3,9 +3,9 @@ import DropdownUserProfile from "./DropdownUserProfile";
 import { useState, useEffect, useRef } from "react";
 import Sidebar from "./Sidebar";
 import Notyfi from "./Notyfi";
-import Image from "next/image";
 import Link from "next/link";
 import { UserProfile } from "@/context/User";
+import UnoptimizedImage from "./UnoptimizedImage";
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [SidebarOpen, setSidebarOpen] = useState(false);
@@ -92,8 +92,10 @@ export default function Header() {
                     aria-expanded="false"
                   >
                     {user.imgUrl ? (
-                      <Image
+                      <UnoptimizedImage
                         className="w-8 h-8 rounded-full"
+                        width={130}
+                        height={130}
                         src={user.imgUrl}
                         alt={user.username}
                       />
