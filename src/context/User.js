@@ -13,13 +13,10 @@ export default function UserContextProvider({ children }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { VerifyUser, GetSalidas } = await import("@/lib/GetData");
-      const [userData, salidasData] = await Promise.all([
-        VerifyUser(),
-        GetSalidas(),
-      ]);
+      const { VerifyUser } = await import("@/lib/GetData");
+      const [userData] = await Promise.all([VerifyUser()]);
       setUser(userData);
-      setSalidas(salidasData);
+      setSalidasChange(true);
     };
     fetchData();
   }, []);

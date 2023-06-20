@@ -1,16 +1,16 @@
-import UserContextProvider from "../../context/User";
 import Header from "../../components/Header";
-import { Suspense } from "react";
-import LoadingSkeleton from "@/components/LoadingSkeleton";
+import UserContextProvider from "@/context/User";
 export default function AdminLayout({ children }) {
   return (
-    <UserContextProvider>
-      <Header />
-      <div className="md:ml-64 md:py-4 md:px-4">
-        <div className="rounded-lg dark:border-gray-700 mt-14">
-          <Suspense fallback={<LoadingSkeleton />}>{children}</Suspense>
+    <div>
+      <UserContextProvider>
+        <Header />
+        <div className="md:ml-64 md:py-4 md:px-4">
+          <div className="rounded-lg dark:border-gray-700 mt-14">
+            {children}
+          </div>
         </div>
-      </div>
-    </UserContextProvider>
+      </UserContextProvider>
+    </div>
   );
 }

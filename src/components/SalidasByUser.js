@@ -154,7 +154,7 @@ export default function SalidasByUser() {
         aria-label="Table navigation"
       >
         <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-          Showing
+          Paginas/
           <span className="font-semibold text-gray-900 dark:text-white">
             {currentPage}-{totalPages}
           </span>

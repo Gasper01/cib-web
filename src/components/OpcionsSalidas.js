@@ -13,7 +13,7 @@ export async function OptionsSalidas({ params }) {
   const [message, setMessage] = useState();
   const { Id } = params;
   const router = useRouter();
-  const { setSalidasChange } = UserProfile();
+  const { user, setSalidasChange } = UserProfile();
   const solicitud = await GetSalidasByid(Id);
 
   const onClickEditeSalida = () => {
@@ -102,16 +102,17 @@ export async function OptionsSalidas({ params }) {
             className="w-full text-white  bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-primary-800"
             onClick={onClickDeleteSalida}
           >
-            {proceso ? "Eliminando..." : "Eliminar"}
+            {proceso ? "Loading..." : "Eliminar"}
           </button>
-
-          <button
-            type="button"
-            className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800"
-            onClick={onClickAprobarSalida}
-          >
-            {proceso ? "Aprobando..." : "Aprobar"}
-          </button>
+          {user.rol === "admin" && (
+            <button
+              type="button"
+              className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800"
+              onClick={onClickAprobarSalida}
+            >
+              {proceso ? "Loading" : "Aprobar"}
+            </button>
+          )}
         </div>
       </div>
     </OutbondlongCard>

@@ -41,6 +41,10 @@ async function fetchWithOption(
   }
 }
 
+export async function GetProducts() {
+  return fetchWithOption(`${baseURL}/products/`, "GET", null, false);
+}
+
 export async function GetDestinos() {
   return fetchWithOption(`${baseURL}/destinations/`, "GET", null, false);
 }

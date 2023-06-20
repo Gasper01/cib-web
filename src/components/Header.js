@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import Sidebar from "./Sidebar";
 import Notyfi from "./Notyfi";
 import Link from "next/link";
+import { UserProfile } from "@/context/User";
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [SidebarOpen, setSidebarOpen] = useState(false);
-
+  const { user } = UserProfile();
   const ref = useRef(null);
 
   useEffect(() => {
@@ -89,12 +90,15 @@ export default function Header() {
                     className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-600"
                     aria-expanded="false"
                   >
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                      alt="user photo"
-                    />
+                    {user.imgUrl ? (
+                      <img
+                        className="w-8 h-8 rounded-full"
+                        src={user.imgUrl}
+                        alt={user.username}
+                      />
+                    ) : (
+                      <p>Loading...</p>
+                    )}
                   </button>
                 </div>
                 {dropdownOpen && <DropdownUserProfile />}

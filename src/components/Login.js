@@ -1,6 +1,6 @@
-'use client';
-import LoginController from '../controller/Login';
-import { useRouter } from 'next/navigation';
+"use client";
+import LoginController from "../controller/Login";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -30,7 +30,7 @@ export default function LoginForm() {
                 {errorMessage}
               </h1>
             ) : (
-              <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-center text-gray-900 md:text-2xl dark:text-white">
                 Inicia sesión con tu cuenta
               </h1>
             )}
@@ -40,7 +40,7 @@ export default function LoginForm() {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Your email
+                  Correo
                 </label>
                 <input
                   type="email"
@@ -58,7 +58,7 @@ export default function LoginForm() {
                   htmlFor="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Password
+                  Contraseña
                 </label>
                 <input
                   type="password"
@@ -80,11 +80,11 @@ export default function LoginForm() {
                 {isLoading ? (
                   <div
                     role="status"
-                    className="flex justify-center items-center"
+                    className="flex items-center justify-center"
                   >
                     <svg
                       aria-hidden="true"
-                      className="w-5 h-5 mr-2 text-gray-200 animate-spin dark:text-gray-200  fill-blue-600"
+                      className="w-5 h-5 mr-2 text-gray-200 animate-spin dark:text-gray-200 fill-blue-600"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@ export default function LoginForm() {
                     <span className="sr-only">Loading...</span>
                   </div>
                 ) : (
-                  'Login'
+                  "Entrar"
                 )}
               </button>
             </form>
