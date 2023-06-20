@@ -11,13 +11,18 @@ export default function ProductsContextProvider({ children }) {
   // Define el estado inicial de los productos
   const [allProducts, setAllProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  // Define el estado para almacenar la categoría seleccionada
   const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const [isLoading, setIsLoading] = useState(true); // Estado de carga
 
   useEffect(() => {
     const fetchData = async () => {
-      const [ProductsData] = await Promise.all([GetProducts()]);
-      setAllProducts(ProductsData);
+      try {
+        const [ProductsData] = await Promise.all([GetProducts()]);
+        setAllProducts(ProductsData);
+        setIsLoading(false); // Marcar como cargado después de recibir los productos
+      } catch (error) {
+        setIsLoading(false); // Marcar como cargado incluso si hay un error para evitar quedar en un estado de carga infinita
+      }
     };
     fetchData();
   }, []);
@@ -39,6 +44,7 @@ export default function ProductsContextProvider({ children }) {
         setSelectedCategory,
         searchValue,
         setSearchValue,
+        isLoading,
       }}
     >
       {children}

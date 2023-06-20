@@ -3,7 +3,15 @@ import { ProductsData } from "@/context/Products";
 import UnoptimizedImage from "./UnoptimizedImage";
 import Link from "next/link";
 export default function ProductListHome() {
-  const { products } = ProductsData();
+  const { products, isLoading } = ProductsData();
+
+  if (isLoading) {
+    return (
+      <h2 className="py-8 text-2xl font-bold tracking-tight text-gray-900">
+        Cargando productos...
+      </h2>
+    );
+  }
   return (
     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
       {products.length > 0 ? (
