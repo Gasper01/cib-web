@@ -3,6 +3,7 @@ import { ProductsData } from "@/context/Products";
 import { useState } from "react";
 
 export default function Allcategory() {
+  const { uniqueCategories } = ProductsData();
   const [isOpen, setOpen] = useState();
   const { setSelectedCategory, selectedCategory } = ProductsData();
 
@@ -11,13 +12,6 @@ export default function Allcategory() {
     setOpen(!isOpen);
   };
 
-  const uniqueCategories = [
-    "Abrazaderas",
-    "Tubos",
-    "Conectores",
-    "Pegamento",
-    "Todas",
-  ];
   return (
     <>
       <button

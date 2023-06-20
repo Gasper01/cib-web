@@ -27,6 +27,8 @@ export default function ProductsContextProvider({ children }) {
     fetchData();
   }, []);
 
+  const uniqueCategories = [...new Set(allProducts.map((res) => res.category))];
+
   const filteredProducts =
     selectedCategory !== "Todas"
       ? allProducts.filter(
@@ -45,6 +47,7 @@ export default function ProductsContextProvider({ children }) {
         searchValue,
         setSearchValue,
         isLoading,
+        uniqueCategories,
       }}
     >
       {children}

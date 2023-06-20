@@ -2,18 +2,15 @@
 import { ProductsData } from "@/context/Products";
 import UnoptimizedImage from "./UnoptimizedImage";
 import Link from "next/link";
+import LoadingSkeleton from "./LoadingSkeleton";
 export default function ProductListHome() {
   const { products, isLoading } = ProductsData();
 
   if (isLoading) {
-    return (
-      <h2 className="py-8 text-2xl font-bold tracking-tight text-gray-900">
-        Cargando productos...
-      </h2>
-    );
+    return <LoadingSkeleton />;
   }
   return (
-    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+    <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
       {products.length > 0 ? (
         <>
           {products.map((res) => (
@@ -22,18 +19,21 @@ export default function ProductListHome() {
                 <UnoptimizedImage
                   src={res.ImgUrl}
                   alt={res.nombre}
-                  width={"450"}
-                  height={"450"}
+                  width="250"
+                  height="50"
                   className="object-cover object-center w-full h-full group-hover:opacity-75"
                 />
               </div>
               <h3 className="mt-4 text-sm text-gray-700">{res.nombre}</h3>
-              <p className="mt-1 text-lg font-medium text-gray-600">
-                <span className="text-lg font-medium text-gray-900 ">
-                  Cantidad:
-                </span>
-                {res.cantidad}
-              </p>
+              {res.cantidad > 0 ? (
+                <p className="mt-1 text-lg font-medium text-green-700">
+                  Cantidad: {res.cantidad}
+                </p>
+              ) : (
+                <p className="mt-1 text-lg font-medium text-red-700">
+                  Cantidad: {res.cantidad}
+                </p>
+              )}
             </Link>
           ))}
         </>

@@ -9,7 +9,6 @@ import UnoptimizedImage from "./UnoptimizedImage";
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [SidebarOpen, setSidebarOpen] = useState(false);
-  const { user } = UserProfile();
   const ref = useRef(null);
 
   useEffect(() => {
@@ -91,17 +90,13 @@ export default function Header() {
                     className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-600"
                     aria-expanded="false"
                   >
-                    {user.imgUrl ? (
-                      <UnoptimizedImage
-                        className="w-8 h-8 rounded-full"
-                        width={130}
-                        height={130}
-                        src={user.imgUrl}
-                        alt={user.username}
-                      />
-                    ) : (
-                      <p>Loading...</p>
-                    )}
+                    <UnoptimizedImage
+                      className="w-8 h-8 rounded-full"
+                      width={130}
+                      height={130}
+                      src="/user.png"
+                      alt="user"
+                    />
                   </button>
                 </div>
                 {dropdownOpen && <DropdownUserProfile />}
