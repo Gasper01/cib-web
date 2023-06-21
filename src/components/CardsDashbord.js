@@ -5,13 +5,14 @@ import { ProductsData } from "@/context/Products";
 import Link from "next/link";
 
 export default function CardsDashbord() {
-  const { products } = ProductsData();
+  //const { products } = ProductsData();
   const { totales, user } = UserProfile();
 
-  const productosAgotados = products.filter(
-    (producto) => producto.cantidad === 0
-  );
-  const totalAgotados = productosAgotados.length;
+  //const productosAgotados = products.filter(
+  //  (producto) => producto.cantidad === 0
+  // );
+  //const totalAgotados = productosAgotados.length;
+
   return (
     <div className="container grid px-6 mx-auto">
       <h2 className="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-50">
@@ -19,7 +20,7 @@ export default function CardsDashbord() {
       </h2>
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <Link
-          href="/admin/salidasByUser"
+          href="/admin/salidasuser"
           className="flex items-center p-4 bg-gray-700 rounded-lg shadow-xs"
         >
           <div className="p-3 mr-4 text-green-500 bg-blue-100 rounded-full">
@@ -139,7 +140,7 @@ export default function CardsDashbord() {
                   Productos Agotados
                 </p>
                 <p className="text-lg font-semibold text-gray-700 dark:text-white">
-                  {totalAgotados}
+                  1
                 </p>
               </div>
             </div>
