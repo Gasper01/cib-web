@@ -7,17 +7,7 @@ import ProductsContextProvider from "@/context/Products";
 export default function Page() {
   return (
     <ProductsContextProvider>
-      <HeadersHome />
-      <main className="max-w-2xl px-4 py-2 mx-auto sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
-        <div className="flex">
-          <SearchProductsHome />
-        </div>
-        <h2 className="py-8 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Lista de Productos
-        </h2>
-        <ProductListHome />
-      </main>
-      <Footer />
+      <p>hola</p>
     </ProductsContextProvider>
   );
 }
