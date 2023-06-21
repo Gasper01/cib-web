@@ -1,3 +1,4 @@
+import ProductsContextProvider from "@/context/Products";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -16,7 +17,9 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>CIB</title>
       </head>
-      <body>{children}</body>
+      <body className="bg-white dark:bg-slate-800">
+        <ProductsContextProvider>{children}</ProductsContextProvider>
+      </body>
     </html>
   );
 }

@@ -9,13 +9,18 @@ export const UserProfile = () => {
 export default function UserContextProvider({ children }) {
   const [user, setUser] = useState([]);
   const [salidas, setSalidas] = useState([]);
+  const [totales, setTotales] = useState([]);
   const [salidasChange, setSalidasChange] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { VerifyUser } = await import("@/lib/GetData");
-      const [userData] = await Promise.all([VerifyUser()]);
+      const { VerifyUser, GetTotales } = await import("@/lib/GetData");
+      const [userData, totales] = await Promise.all([
+        VerifyUser(),
+        GetTotales(),
+      ]);
       setUser(userData);
+      setTotales(totales);
       setSalidasChange(true);
     };
     fetchData();
@@ -34,7 +39,7 @@ export default function UserContextProvider({ children }) {
   }, [salidasChange]);
 
   return (
-    <UserContext.Provider value={{ salidas, user, setSalidasChange }}>
+    <UserContext.Provider value={{ salidas, user, setSalidasChange, totales }}>
       {children}
     </UserContext.Provider>
   );

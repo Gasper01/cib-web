@@ -19,7 +19,7 @@ export default function LoginController(router) {
         setLoading(false);
         return setErrorMessage(token.message);
       }
-      router.push("/admin");
+      router.replace("/admin");
       Cookies.set("token", token, { sameSite: "none", secure: true });
     } catch (error) {
       return { error: "server errror" };

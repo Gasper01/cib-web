@@ -2,6 +2,7 @@ import ContentLoader from "react-content-loader";
 export default function LoadingSkeleton(props) {
   return (
     <ContentLoader
+      className="w-full "
       speed={2}
       width={400}
       height={160}

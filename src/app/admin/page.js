@@ -1,4 +1,4 @@
-import SalidasByUser from "@/components/SalidasByUser";
+import CardsDashbord from "@/components/CardsDashbord";
 export default function Page() {
-  return <SalidasByUser />;
+  return <CardsDashbord />;
 }

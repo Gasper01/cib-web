@@ -5,7 +5,7 @@ export default function AdminLayout({ children }) {
     <div className="h-screen dark:bg-slate-800">
       <UserContextProvider>
         <Header />
-        <div className="md:ml-64 md:py-4 md:px-4 ">
+        <div className="px-2 py-2 md:ml-64 md:py-4 md:px-4 ">
           <div className="rounded-lg dark:border-gray-700 mt-14">
             {children}
           </div>

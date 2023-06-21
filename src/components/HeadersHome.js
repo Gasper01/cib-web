@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 export default function HeadersHome() {
   const [isOpen, setOpen] = useState(false);
-  const opciones = [{ label: "Videos" }, { label: "Contato" }];
+  const opciones = [{ label: "Videos" }, { label: "Contacto" }];
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
