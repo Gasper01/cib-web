@@ -1,4 +1,5 @@
 "use client";
+
 import { GetProducts } from "@/lib/GetData";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -17,11 +18,10 @@ export default function ProductsContextProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [ProductsData] = await Promise.all([GetProducts()]);
+        const [ProductsData] = await Promise.all(GetProducts());
         setAllProducts(ProductsData);
         setIsLoading(false); // Marcar como cargado después de recibir los productos
       } catch (error) {
-        console.log(error);
         setIsLoading(false); // Marcar como cargado incluso si hay un error para evitar quedar en un estado de carga infinita
       }
     };
