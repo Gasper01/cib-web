@@ -16,6 +16,7 @@ export default function Page() {
         <h2 className="py-8 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Lista de Productos
         </h2>
+        <ProductListHome />
       </main>
       <Footer />
     </ProductsContextProvider>
