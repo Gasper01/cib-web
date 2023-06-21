@@ -3,14 +3,13 @@ import { ProductsData } from "@/context/Products";
 import UnoptimizedImage from "./UnoptimizedImage";
 import Link from "next/link";
 import LoadingSkeleton from "./LoadingSkeleton";
-import { Suspense } from "react";
 export default function ProductListHome() {
   const { products, isLoading } = ProductsData();
 
   return (
     <>
       {isLoading ? (
-        <p></p>
+        <LoadingSkeleton />
       ) : (
         <div className="grid grid-cols-2 mb-24 gap-x-6 gap-y-10 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {products.length > 0 ? (

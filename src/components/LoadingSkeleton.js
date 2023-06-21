@@ -1,15 +1,14 @@
-"use client";
 import ContentLoader from "react-content-loader";
-export default function LoadingSkeleton() {
+export default function LoadingSkeleton(props) {
   return (
     <ContentLoader
-      className="w-full "
       speed={2}
       width={400}
       height={160}
       viewBox="0 0 400 160"
       backgroundColor="#92dda5"
       foregroundColor="#ecebeb"
+      {...props}
     >
       <rect x="48" y="8" rx="3" ry="3" width="88" height="6" />
       <rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
