@@ -19,8 +19,6 @@ export default function Page() {
           </h2>
           <ProductListHome />
         </main>
-
-        <Footer />
       </ProductsContextProvider>
     </>
   );
