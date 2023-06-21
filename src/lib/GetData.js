@@ -95,7 +95,7 @@ export async function VerifyUser() {
   return fetchWithOption(`${baseURL}/user/verifyuser`, "GET", null, true);
 }
 export async function GetTotales() {
-  return fetchWithOption(`${TextUrl}/totales`, "GET", null, true);
+  return fetchWithOption(`${baseURL}/totales`, "GET", null, true);
 }
 
 export async function GetLogin(email, password) {
