@@ -37,8 +37,6 @@ export default function ProductsContextProvider({ children }) {
         )
       : allProducts.filter((product) => product.nombre.includes(searchValue));
 
-  const uniqueCategories = [...new Set(allProducts.map((res) => res.category))];
-
   return (
     <ProductsContext.Provider
       value={{
@@ -48,7 +46,6 @@ export default function ProductsContextProvider({ children }) {
         searchValue,
         setSearchValue,
         isLoading,
-        uniqueCategories,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-export default function LoadingSkeleton(props) {
+export default function LoadingSkeleton() {
   return (
     <div
       role="status"

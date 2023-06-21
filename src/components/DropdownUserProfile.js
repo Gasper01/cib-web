@@ -7,7 +7,7 @@ export default function DropdownUserProfile() {
   const SignOut = () => {
     Cookies.remove("token");
     Cookies.remove("selectedProductscookie");
-    router.replace("/login");
+    router.replace("/");
   };
   return (
     <div className="absolute w-48 my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow drop-down dark:bg-gray-700 dark:divide-gray-600 top-12 right-3">

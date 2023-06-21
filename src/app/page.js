@@ -10,7 +10,6 @@ export default function Page() {
       <HeadersHome />
       <main className="max-w-2xl px-4 py-2 mx-auto sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
         <div className="flex">
-          <Allcategory />
           <SearchProductsHome />
         </div>
         <h2 className="py-8 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
