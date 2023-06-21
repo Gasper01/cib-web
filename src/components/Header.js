@@ -87,7 +87,7 @@ export default function Header() {
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
                     type="button"
-                    className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-600"
+                    className="flex text-sm bg-gray-200 rounded-full dark:bg-gray-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-600"
                     aria-expanded="false"
                   >
                     <UnoptimizedImage
