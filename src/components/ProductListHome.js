@@ -41,7 +41,7 @@ export default function ProductListHome() {
               ))}
             </>
           ) : (
-            <h2 className="py-8 text-2xl font-bold tracking-tight text-gray-900">
+            <h2 className="py-8 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               No hay prodcutos
             </h2>
           )}
