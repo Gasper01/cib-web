@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -16,7 +18,9 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>CIB</title>
       </head>
-      <body className="bg-white dark:bg-slate-800">{children}</body>
+      <body className="bg-white dark:bg-slate-800">
+        <Suspense fallback={<LoadingSkeleton />}>{children}</Suspense>
+      </body>
     </html>
   );
 }

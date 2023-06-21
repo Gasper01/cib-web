@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <>
       <HeadersHome />
-      <ProductsContextProvider>
-        <main className="max-w-2xl px-4 py-2 mx-auto sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
+      <main className="max-w-2xl px-4 py-2 mx-auto sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
+        <ProductsContextProvider>
           <div className="flex">
             <Allcategory />
             <SearchProductsHome />
@@ -18,8 +18,9 @@ export default function Home() {
             Lista de Productos
           </h2>
           <ProductListHome />
-        </main>
-      </ProductsContextProvider>
+        </ProductsContextProvider>
+      </main>
+
       <Footer />
     </>
   );

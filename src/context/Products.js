@@ -8,34 +8,28 @@ export const ProductsData = () => {
 };
 
 export default function ProductsContextProvider({ children }) {
-  // Define el estado inicial de los productos
   const [allProducts, setAllProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todas");
-  const [isLoading, setIsLoading] = useState(true); // Estado de carga
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [ProductsData] = await Promise.all([GetProducts()]);
-        setAllProducts(ProductsData);
-        setIsLoading(false); // Marcar como cargado después de recibir los productos
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false); // Marcar como cargado incluso si hay un error para evitar quedar en un estado de carga infinita
-      }
+    const fetchData = () => {
+      GetProducts()
+        .then((productsData) => {
+          setAllProducts(productsData);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
     fetchData();
   }, []);
 
-  const filteredProducts =
-    selectedCategory !== "Todas"
-      ? allProducts.filter(
-          (product) =>
-            product.category === selectedCategory &&
-            product.nombre.includes(searchValue)
-        )
-      : allProducts.filter((product) => product.nombre.includes(searchValue));
+  const filteredProducts = allProducts.filter(
+    (product) =>
+      (selectedCategory === "Todas" || product.category === selectedCategory) &&
+      product.nombre.includes(searchValue)
+  );
 
   const uniqueCategories = [...new Set(allProducts.map((res) => res.category))];
 
@@ -48,7 +42,6 @@ export default function ProductsContextProvider({ children }) {
         setSelectedCategory,
         searchValue,
         setSearchValue,
-        isLoading,
       }}
     >
       {children}

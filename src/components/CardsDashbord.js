@@ -21,7 +21,7 @@ export default function CardsDashbord() {
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <Link
           href="/admin/salidasuser"
-          className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs"
+          className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700"
         >
           <div className="p-3 mr-4 text-green-500 bg-blue-100 rounded-full">
             <UnoptimizedImage
@@ -43,7 +43,7 @@ export default function CardsDashbord() {
         </Link>
         {user.rol === "admin" && (
           <>
-            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs">
+            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700">
               <div className="p-3 mr-4 text-green-500 bg-blue-100 rounded-full">
                 <UnoptimizedImage
                   src="/producto.png"
@@ -62,7 +62,7 @@ export default function CardsDashbord() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs">
+            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700">
               <div className="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
                 <UnoptimizedImage
                   src="/salidas.png"
@@ -82,7 +82,7 @@ export default function CardsDashbord() {
               </div>
             </div>
 
-            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs">
+            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700">
               <div className="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
                 <svg
                   className="w-8 h-full"
@@ -102,7 +102,7 @@ export default function CardsDashbord() {
               </div>
             </div>
 
-            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs">
+            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700">
               <div className="p-3 mr-4 text-red-500 bg-red-100 rounded-full">
                 <UnoptimizedImage
                   src="/return.png"
@@ -122,7 +122,7 @@ export default function CardsDashbord() {
               </div>
             </div>
 
-            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs">
+            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700">
               <div className="p-3 mr-4 text-yellow-500 bg-yellow-100 rounded-full">
                 <UnoptimizedImage
                   src="/alert.png"
@@ -141,7 +141,7 @@ export default function CardsDashbord() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs">
+            <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700">
               <div className="p-3 mr-4 text-yellow-500 bg-yellow-100 rounded-full">
                 <UnoptimizedImage
                   src="/choferes.png"
