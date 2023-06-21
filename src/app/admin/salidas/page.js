@@ -1,4 +1,4 @@
 import OutboundForm from "../../../components/OutboundForm";
-export default function SalidasPage() {
+export default function SalidasUser() {
   return <OutboundForm />;
 }

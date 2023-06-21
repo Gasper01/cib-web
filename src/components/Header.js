@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Sidebar from "./Sidebar";
 import Notyfi from "./Notyfi";
 import Link from "next/link";
-import { UserProfile } from "@/context/User";
 import UnoptimizedImage from "./UnoptimizedImage";
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
