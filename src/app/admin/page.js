@@ -1,4 +1,4 @@
 import CardsDashbord from "@/components/CardsDashbord";
-export default function Page() {
+export default function Admin() {
   return <CardsDashbord />;
 }
