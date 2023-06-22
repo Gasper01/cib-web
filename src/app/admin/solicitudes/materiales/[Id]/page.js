@@ -1,5 +1,5 @@
 import { OptionsSalidas } from "@/components/OpcionsSalidas";
 
-export default function ListaMateriales({ params }) {
+export default function Page({ params }) {
   return <OptionsSalidas params={params} />;
 }

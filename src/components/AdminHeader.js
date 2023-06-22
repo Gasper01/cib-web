@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 import Notyfi from "./Notyfi";
 import Link from "next/link";
 import UnoptimizedImage from "./UnoptimizedImage";
-export default function Header() {
+export default function AdminHeader() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [SidebarOpen, setSidebarOpen] = useState(false);
   const ref = useRef(null);

@@ -1,5 +1,5 @@
 import SalidasByUser from "@/components/SalidasByUser";
 
-export default function Salidas() {
+export default function Page() {
   return <SalidasByUser />;
 }

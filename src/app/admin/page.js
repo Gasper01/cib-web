@@ -1,3 +1,5 @@
-export default function AdminPage() {
-  return <p>prodando sin doc</p>;
+import DasbordAdmin from "@/components/DasbordAdmin";
+
+export default function Page() {
+  return <DasbordAdmin />;
 }
