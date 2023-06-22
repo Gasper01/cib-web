@@ -89,13 +89,15 @@ export default function AdminHeader() {
                     className="flex text-sm bg-gray-200 rounded-full dark:bg-gray-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-600"
                     aria-expanded="false"
                   >
-                    <UnoptimizedImage
-                      className="w-8 h-8 rounded-full"
-                      width={130}
-                      height={130}
-                      src="/user.png"
-                      alt="user"
-                    />
+                    <div className="w-8 h-8">
+                      <UnoptimizedImage
+                        width={130}
+                        height={130}
+                        src="/user.png"
+                        alt="user"
+                        className="object-cover object-center w-full h-full rounded-full"
+                      />
+                    </div>
                   </button>
                 </div>
                 {dropdownOpen && <DropdownUserProfile />}
