@@ -1,4 +1,3 @@
-import CardsDashbord from "@/components/CardsDashbord";
-export default function Admin() {
-  return <CardsDashbord />;
+export default function AdminPage() {
+  return <p>prodando sin doc</p>;
 }
