@@ -15,7 +15,7 @@ export default function ProductListHome() {
           {products.length > 0 ? (
             <>
               {products.map((res) => (
-                <Link key={res.id} href="#" className="group">
+                <Link key={res.id} href="#" rel="preload" className="group">
                   <div className="w-full overflow-hidden bg-gray-200 rounded-lg dark:bg-slate-800 aspect-h-1 aspect-w-1 xl:aspect-h-6 xl:aspect-w-7">
                     <UnoptimizedImage
                       src={res.ImgUrl}
