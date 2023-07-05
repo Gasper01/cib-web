@@ -2,7 +2,7 @@ import { GetMotoristas } from "@/lib/GetData";
 import { CreateMotoristas } from "@/lib/PostData";
 import { UpdateMotoristas } from "@/lib/PutAndDeleteData";
 import { useState, useEffect } from "react";
-export default function AddMotiristas(id) {
+export default function AddMotiristas(Id) {
   const [isloading, setLoading] = useState(false);
   const [message, setErrorMessage] = useState("");
   const [motoristas, setMotoristas] = useState([]);
@@ -23,8 +23,8 @@ export default function AddMotiristas(id) {
   }, [isUpdate]);
 
   useEffect(() => {
-    if (id !== "nuevo") {
-      const motorista = motoristas.find((motorista) => motorista.id === id);
+    if (Id !== "nuevo") {
+      const motorista = motoristas.find((motorista) => motorista.Id === Id);
 
       if (motorista) {
         const { motoristaName, cars, placa } = motorista;
@@ -37,7 +37,7 @@ export default function AddMotiristas(id) {
         });
       }
     }
-  }, [id, motoristas]);
+  }, [Id, motoristas]);
 
   const handleChange = (e) => {
     setFormData({
@@ -50,8 +50,8 @@ export default function AddMotiristas(id) {
     e.preventDefault();
     try {
       setLoading(true);
-      if (id !== "nuevo") {
-        setErrorMessage(await UpdateMotoristas(id, formData));
+      if (Id !== "nuevo") {
+        setErrorMessage(await UpdateMotoristas(Id, formData));
       } else {
         setErrorMessage(await CreateMotoristas(formData));
       }

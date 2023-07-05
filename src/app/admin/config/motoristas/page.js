@@ -2,8 +2,8 @@
 import Link from "next/link";
 import AddMotiristas from "../hook/motoristas";
 export default function Page({ params }) {
-  const { id } = params;
-  const { motoristas } = AddMotiristas(id);
+  const { Id } = params;
+  const { motoristas } = AddMotiristas(Id);
 
   return (
     <>
