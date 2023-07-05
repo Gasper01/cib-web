@@ -3,14 +3,17 @@
 import { UserProfile } from "@/context/User";
 import UnoptimizedImage from "./UnoptimizedImage";
 import Link from "next/link";
+import { ProductsData } from "@/context/Products";
+
 export default function DasbordAdmin() {
-  // const { products } = ProductsData();
+  const { products } = ProductsData();
+
   const { totales, user } = UserProfile();
 
-  // const productosAgotados = products.filter(
-  //  (producto) => producto.cantidad === 0
-  // );
-  //const totalAgotados = productosAgotados.length;
+  const productosAgotados = products.filter(
+    (producto) => producto.cantidad === 0
+  );
+  const totalAgotados = productosAgotados.length;
 
   return (
     <div className="container grid px-6 mx-auto">
@@ -136,7 +139,7 @@ export default function DasbordAdmin() {
                   Productos Agotados
                 </p>
                 <p className="text-lg font-semibold text-gray-700 dark:text-white">
-                  1
+                  {totalAgotados}
                 </p>
               </div>
             </div>

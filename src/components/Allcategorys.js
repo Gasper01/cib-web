@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Allcategory() {
   const { uniqueCategories } = ProductsData();
   const [isOpen, setOpen] = useState();
-  const { setSelectedCategory, selectedCategory } = ProductsData();
+  const { selectedCategory, setSelectedCategory } = ProductsData();
 
   const onClickSetCategory = (category) => {
     setSelectedCategory(category);

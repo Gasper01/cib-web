@@ -13,20 +13,21 @@ export default function ProductsContextProvider({ children }) {
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [isLoading, setIsLoading] = useState(true); // Estado de carga
+  const [isUpdate, setUpdate] = useState(false); // Estado de carga
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [ProductsData] = await Promise.all([GetProducts()]);
         setAllProducts(ProductsData);
-        setIsLoading(false); // Marcar como cargado después de recibir los productos
+        setIsLoading(false);
+        setUpdate(false);
       } catch (error) {
-        console.log(error);
-        setIsLoading(false); // Marcar como cargado incluso si hay un error para evitar quedar en un estado de carga infinita
+        setIsLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, [isUpdate]);
 
   const filteredProducts =
     selectedCategory !== "Todas"
@@ -35,7 +36,10 @@ export default function ProductsContextProvider({ children }) {
             product.category === selectedCategory &&
             product.nombre.includes(searchValue)
         )
-      : allProducts.filter((product) => product.nombre.includes(searchValue));
+      : allProducts.filter(
+          (product) =>
+            product.nombre.includes(searchValue) || product.id === searchValue
+        );
 
   const uniqueCategories = [...new Set(allProducts.map((res) => res.category))];
 
@@ -49,6 +53,7 @@ export default function ProductsContextProvider({ children }) {
         searchValue,
         setSearchValue,
         isLoading,
+        setUpdate,
       }}
     >
       {children}

@@ -112,8 +112,8 @@ export default function Sidebar({ setSidebarOpen, dropdownOpen }) {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/admin/config"
                   className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <svg
@@ -129,7 +129,7 @@ export default function Sidebar({ setSidebarOpen, dropdownOpen }) {
                   <span className="flex-1 ml-3 whitespace-nowrap">
                     Configuracion
                   </span>
-                </a>
+                </Link>
               </li>
             </>
           )}
