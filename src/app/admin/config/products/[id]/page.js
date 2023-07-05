@@ -6,7 +6,7 @@ import Input from "../../component/input";
 import Allcategory from "@/components/Allcategorys";
 import Cards from "../../component/cards";
 
-export default function page({ params }) {
+export default function Page({ params }) {
   const { id } = params;
   let Title = "Agregar Nuevo Producto";
   let bottontext = "Agregar";

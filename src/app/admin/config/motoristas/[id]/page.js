@@ -3,7 +3,7 @@ import Form from "../../component/form";
 import Input from "../../component/input";
 import Cards from "../../component/cards";
 import AddMotiristas from "../../hook/motoristas";
-export default function page({ params }) {
+export default function Page({ params }) {
   const { id } = params;
   let Title = "Agregar Nuevo Motorista";
   let bottontext = "Agregar";
