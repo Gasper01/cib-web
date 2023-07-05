@@ -3,7 +3,7 @@ import Allcategory from "@/components/Allcategorys";
 import { ProductsData } from "@/context/Products";
 import Link from "next/link";
 
-export default function page() {
+export default function Page() {
   const { products } = ProductsData();
 
   return (
