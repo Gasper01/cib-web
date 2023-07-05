@@ -1,12 +1,13 @@
 "use client";
-import Form from "../../../component/form";
-import { AddProducts } from "../../../hook/addProduct";
-import Input from "../../../component/input";
+import Form from "../../component/form";
+import { AddProducts } from "../../hook/addProduct";
+import Input from "../../component/input";
 import Allcategory from "@/components/Allcategorys";
-import Cards from "../../../component/cards";
+import Cards from "../../component/cards";
 
 export default function Page({ params }) {
   const { Id } = params;
+
   let Title = "Agregar Nuevo Producto";
   let bottontext = "Agregar";
 

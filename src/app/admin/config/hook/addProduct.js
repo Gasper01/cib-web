@@ -19,8 +19,8 @@ export function AddProducts(Id) {
   const [formData, setFormData] = useState(Inicialstate);
 
   useEffect(() => {
-    if (Id !== undefined) {
-      const producto = products.find((product) => product.Id === Id);
+    if (Id !== "nuevo") {
+      const producto = products.find((product) => product.id === Id);
 
       if (producto) {
         const { nombre, ImgUrl, cantIdad, codigo, unIdad, category } = producto;
