@@ -4,16 +4,16 @@ import Input from "../../component/input";
 import Cards from "../../component/cards";
 import AddMotiristas from "../../hook/motoristas";
 export default function Page({ params }) {
-  const { id } = params;
+  const { Id } = params;
   let Title = "Agregar Nuevo Motorista";
   let bottontext = "Agregar";
 
-  if (id !== "nuevo") {
+  if (Id !== "nuevo") {
     Title = "Editar Motorista";
     bottontext = "Salvar Cambios";
   }
   const { onSubmitForm, handleChange, formData, isloadin, message } =
-    AddMotiristas(id);
+    AddMotiristas(Id);
 
   return (
     <Cards

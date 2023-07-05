@@ -7,16 +7,16 @@ import Allcategory from "@/components/Allcategorys";
 import Cards from "../../component/cards";
 
 export default function Page({ params }) {
-  const { id } = params;
+  const { Id } = params;
   let Title = "Agregar Nuevo Producto";
   let bottontext = "Agregar";
 
-  if (id !== "nuevo") {
+  if (Id !== "nuevo") {
     Title = "Editar Producto";
     bottontext = "Salvar Cambios";
   }
   const { onSubmitForm, handleChange, formData, isloadin, message } =
-    AddProducts(id);
+    AddProducts(Id);
 
   return (
     <Cards
@@ -44,19 +44,19 @@ export default function Page({ params }) {
           onChange={handleChange}
         />
         <Input
-          label={"Cantidad"}
+          label={"CantIdad"}
           type={"number"}
-          name={"cantidad"}
+          name={"cantIdad"}
           placeholder={""}
-          value={formData.cantidad}
+          value={formData.cantIdad}
           onChange={handleChange}
         />
         <Input
           label={"UND"}
           type={"text"}
-          name={"unidad"}
+          name={"unIdad"}
           placeholder={"UND, GALONES, LITROS, CUARTOS"}
-          value={formData.unidad}
+          value={formData.unIdad}
           onChange={handleChange}
         />
         <Input

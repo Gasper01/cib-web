@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { CreateProducts } from "@/lib/PostData";
 import { UpdateProductById } from "@/lib/PutAndDeleteData";
 
-export function AddProducts(id) {
+export function AddProducts(Id) {
   const { setUpdate, selectedCategory, setSelectedCategory, products } =
     ProductsData();
   const [isloading, setLoading] = useState(false);
@@ -11,31 +11,31 @@ export function AddProducts(id) {
   const Inicialstate = {
     nombre: "",
     ImgUrl: "",
-    cantidad: 0,
+    cantIdad: 0,
     codigo: 0,
-    unidad: "",
+    unIdad: "",
     category: selectedCategory,
   };
   const [formData, setFormData] = useState(Inicialstate);
 
   useEffect(() => {
-    if (id !== undefined) {
-      const producto = products.find((product) => product.id === id);
+    if (Id !== undefined) {
+      const producto = products.find((product) => product.Id === Id);
 
       if (producto) {
-        const { nombre, ImgUrl, cantidad, codigo, unidad, category } = producto;
+        const { nombre, ImgUrl, cantIdad, codigo, unIdad, category } = producto;
         setSelectedCategory(category);
         setFormData({
           ...formData,
           nombre: nombre,
           ImgUrl: ImgUrl,
-          cantidad: cantidad,
+          cantIdad: cantIdad,
           codigo: codigo,
-          unidad: unidad,
+          unIdad: unIdad,
         });
       }
     }
-  }, [id, products]);
+  }, [Id, products]);
 
   const handleChange = (e) => {
     setFormData({
@@ -55,8 +55,8 @@ export function AddProducts(id) {
     e.preventDefault();
     try {
       setLoading(true);
-      if (id !== "nuevo") {
-        setErrorMessage(await UpdateProductById(id, formData));
+      if (Id !== "nuevo") {
+        setErrorMessage(await UpdateProductById(Id, formData));
       } else {
         setErrorMessage(await CreateProducts(formData));
       }
