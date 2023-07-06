@@ -1,7 +1,5 @@
 "use client";
-import { GetProducts } from "@/lib/GetData";
 import { createContext, useContext, useEffect, useState } from "react";
-
 export const ProductsContext = createContext(null);
 export const ProductsData = () => {
   return useContext(ProductsContext);
@@ -18,6 +16,7 @@ export default function ProductsContextProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const { GetProducts } = await import("@/lib/GetData");
         const [ProductsData] = await Promise.all([GetProducts()]);
         setAllProducts(ProductsData);
         setIsLoading(false);
