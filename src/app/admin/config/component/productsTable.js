@@ -1,7 +1,4 @@
-"use cleint";
-import { ProductsData } from "@/context/Products";
+"use client";
 export default function ProductsTable() {
-  const { products } = ProductsData();
-  console.log(products);
   return <p>hola</p>;
 }
