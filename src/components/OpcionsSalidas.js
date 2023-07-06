@@ -8,13 +8,24 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export async function OptionsSalidas({ params }) {
+export function OptionsSalidas({ params }) {
   const [proceso, setProceso] = useState();
   const [message, setMessage] = useState();
+  const [solicitud, setSolicitud] = useState();
   const { Id } = params;
   const router = useRouter();
   const { user, setSalidasChange } = UserProfile();
-  const solicitud = await GetSalidasByid(Id);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const solicitud = await GetSalidasByid(Id);
+        setSolicitud(solicitud);
+      } catch (error) {}
+    };
+
+    fetchData();
+  }, [Id]);
 
   const onClickEditeSalida = () => {
     setProceso(true);
@@ -34,6 +45,7 @@ export async function OptionsSalidas({ params }) {
       setProceso(false);
     }
   };
+
   const onClickAprobarSalida = async () => {
     try {
       setProceso(true);
