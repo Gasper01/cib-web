@@ -1,5 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
+
 export const ProductsContext = createContext(null);
 export const ProductsData = () => {
   return useContext(ProductsContext);

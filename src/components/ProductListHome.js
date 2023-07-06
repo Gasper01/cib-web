@@ -1,5 +1,5 @@
 "use client";
-import { ProductsData } from "@/context/Products";
+import { ProductsData } from "@/context/ProductContext";
 import UnoptimizedImage from "./UnoptimizedImage";
 import Link from "next/link";
 import LoadingSkeleton from "./LoadingSkeleton";

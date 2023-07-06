@@ -2,7 +2,7 @@
 import { UserProfile } from "@/context/User";
 import UnoptimizedImage from "./UnoptimizedImage";
 import Link from "next/link";
-import { ProductsData } from "@/context/Products";
+import { ProductsData } from "@/context/ProductContext";
 
 export default function DasbordAdmin() {
   const { products } = ProductsData();

@@ -1,4 +1,4 @@
-import { ProductsData } from "@/context/Products";
+import { ProductsData } from "@/context/ProductContext";
 import { useState, useEffect } from "react";
 import { CreateProducts } from "@/lib/PostData";
 import { UpdateProductById } from "@/lib/PutAndDeleteData";

@@ -1,5 +1,5 @@
 "use client";
-import { ProductsData } from "@/context/Products";
+import { ProductsData } from "@/context/ProductContext";
 
 export default function SearchProductsHome() {
   const { searchValue, setSearchValue } = ProductsData();

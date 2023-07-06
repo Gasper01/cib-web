@@ -1,5 +1,5 @@
 "use client";
-import { ProductsData } from "@/context/Products";
+import { ProductsData } from "@/context/ProductContext";
 import { useState } from "react";
 
 export default function Allcategory() {
