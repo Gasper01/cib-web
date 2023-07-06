@@ -8,7 +8,7 @@ export default function Page() {
       </h2>
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <CardsButton
-          url={"/admin/"}
+          url={"/admin/config/Productos"}
           img={"/producto.png"}
           alt={"producto"}
           text={"Productos"}
