@@ -8,13 +8,13 @@ export default function Page() {
       </h2>
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <CardsButton
-          url={"/admin/config/products"}
+          url={"/admin/"}
           img={"/producto.png"}
           alt={"producto"}
           text={"Productos"}
         />
         <CardsButton
-          url={"/admin/config/products"}
+          url={"/admin/"}
           img={"/user.png"}
           alt={"Usuario"}
           text={"Usuarios"}
@@ -26,7 +26,7 @@ export default function Page() {
           text={"Motoristas"}
         />
         <CardsButton
-          url={"/admin/config/products"}
+          url={"/admin/config/Productos"}
           img={"/casha.png"}
           alt={"Finca"}
           text={"Fincas"}
