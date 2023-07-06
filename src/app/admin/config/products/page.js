@@ -1,5 +1,4 @@
 "use client";
-import Allcategory from "@/components/Allcategorys";
 import { ProductsData } from "@/context/Products";
 import Link from "next/link";
 
