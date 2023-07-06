@@ -87,9 +87,10 @@ export function SearchProductsController({
     try {
       setSearching(true);
       const response = await CreateSalida(selectedProducts);
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message);
+      if (!response == "ok") {
+        console.log(response);
+        setSearching(false);
+        throw new Error(response.message);
       }
 
       Cookies.remove("selectedProductscookie");
@@ -107,9 +108,9 @@ export function SearchProductsController({
         selectedProducts.id,
         selectedProducts
       );
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message);
+      if (!response == "ok") {
+        setSearching(false);
+        throw new Error(response.message);
       }
 
       router.push(`/admin/solicitudes/materiales/${selectedProducts.id}`);

@@ -6,7 +6,7 @@ import { AprobarSalida } from "@/lib/PostData";
 import { DeleteSalidasById } from "@/lib/PutAndDeleteData";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function OptionsSalidas({ params }) {
   const [proceso, setProceso] = useState();
@@ -25,7 +25,7 @@ export function OptionsSalidas({ params }) {
     };
 
     fetchData();
-  }, [Id]);
+  }, [Id, solicitud]);
 
   const onClickEditeSalida = () => {
     setProceso(true);
@@ -37,8 +37,10 @@ export function OptionsSalidas({ params }) {
     try {
       setProceso(true);
       const res = await DeleteSalidasById(Id);
-      if (res.ok) {
-        router.push("/admin");
+
+      if (res.message == "ok") {
+        console.log("hola");
+        router.push("/admin/solicitudes");
         setSalidasChange(true);
       }
     } catch (error) {
@@ -50,8 +52,8 @@ export function OptionsSalidas({ params }) {
     try {
       setProceso(true);
       const res = await AprobarSalida(Id);
-      if (!res.ok) {
-        const error = await res.json();
+      if (!res == "ok") {
+        setProceso(false);
         throw new Error(error.message);
       }
 
@@ -65,8 +67,8 @@ export function OptionsSalidas({ params }) {
 
   return (
     <OutbondlongCard
-      title={`${solicitud.destino}`}
-      subtitle={`Fecha: ${solicitud.fecha}`}
+      title={`${solicitud?.destino}`}
+      subtitle={`Fecha: ${solicitud?.fecha}`}
     >
       <span className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-red-500">
         {message}
@@ -87,7 +89,7 @@ export function OptionsSalidas({ params }) {
             </tr>
           </thead>
           <tbody>
-            {solicitud.productos.map((producto, index) => (
+            {solicitud?.productos?.map((producto, index) => (
               <tr
                 key={index}
                 className="font-semibold text-gray-900 bg-white border-b dark:text-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
