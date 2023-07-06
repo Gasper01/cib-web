@@ -3,7 +3,7 @@ import Allcategory from "@/components/Allcategorys";
 import { ProductsData } from "@/context/Products";
 import Link from "next/link";
 export default function Page() {
-  const { products } = ProductsData;
+  const { products } = ProductsData();
   return (
     <div>
       <Link
@@ -50,7 +50,7 @@ export default function Page() {
           </tr>
         </thead>
         <tbody>
-          {products.map((res, index) => (
+          {products?.map((res, index) => (
             <tr
               key={index}
               className="font-semibold text-gray-900 bg-white border-b dark:text-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
