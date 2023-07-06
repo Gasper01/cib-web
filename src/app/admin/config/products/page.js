@@ -1,6 +1,5 @@
 import Allcategory from "@/components/Allcategorys";
 import Link from "next/link";
-import ProductsTable from "../component/productsTable";
 
 export default function Page() {
   return (
@@ -32,7 +31,6 @@ export default function Page() {
           Agregar Producto
         </Link>
       </div>
-      <ProductsTable />
     </>
   );
 }
