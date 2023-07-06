@@ -13,7 +13,7 @@ export default function Allcategory() {
   };
 
   return (
-    <div>
+    <>
       <button
         onClick={() => setOpen(!isOpen)}
         id="dropdown-button"
@@ -52,6 +52,6 @@ export default function Allcategory() {
           </ul>
         </div>
       )}
-    </div>
+    </>
   );
 }
