@@ -3,10 +3,9 @@ import Footer from "@/components/Footer";
 import HeadersHome from "@/components/HeadersHome";
 import ProductListHome from "@/components/ProductListHome";
 import SearchProductsHome from "@/components/SaerchProductHome";
-import ProductsContextProvider from "@/context/Products";
 export default function Home() {
   return (
-    <ProductsContextProvider>
+    <>
       <HeadersHome />
       <main className="max-w-2xl px-4 py-2 mx-auto sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
         <div className="flex">
@@ -20,6 +19,6 @@ export default function Home() {
       </main>
 
       <Footer />
-    </ProductsContextProvider>
+    </>
   );
 }
