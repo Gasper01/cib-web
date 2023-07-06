@@ -2,16 +2,17 @@
 import { UserProfile } from "@/context/User";
 import UnoptimizedImage from "./UnoptimizedImage";
 import Link from "next/link";
+import { ProductsData } from "@/context/Products";
 
 export default function DasbordAdmin() {
-  //const { products } = ProductsData();
+  const { products } = ProductsData();
 
   const { totales, user } = UserProfile();
 
-  // const productosAgotados = products.filter(
-  //   (producto) => producto.cantidad === 0
-  //);
-  //const totalAgotados = productosAgotados.length;
+  const productosAgotados = products.filter(
+    (producto) => producto.cantidad === 0
+  );
+  const totalAgotados = productosAgotados.length;
 
   return (
     <div className="container grid px-6 mx-auto">
@@ -57,7 +58,9 @@ export default function DasbordAdmin() {
                 <p className="mb-2 text-sm font-medium text-gray-600 dark:text-white">
                   Total Productos
                 </p>
-                <p className="text-lg font-semibold text-gray-700 dark:text-white"></p>
+                <p className="text-lg font-semibold text-gray-700 dark:text-white">
+                  {totales.products}
+                </p>
               </div>
             </div>
             <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700">
@@ -134,7 +137,9 @@ export default function DasbordAdmin() {
                 <p className="mb-2 text-sm font-medium text-gray-600 dark:text-white">
                   Productos Agotados
                 </p>
-                <p className="text-lg font-semibold text-gray-700 dark:text-white"></p>
+                <p className="text-lg font-semibold text-gray-700 dark:text-white">
+                  {totalAgotados}
+                </p>
               </div>
             </div>
             <div className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700">
