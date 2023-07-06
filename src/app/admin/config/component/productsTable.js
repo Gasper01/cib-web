@@ -1,3 +1,4 @@
+"use cleint";
 import { ProductsData } from "@/context/Products";
 export default function ProductsTable() {
   const { products } = ProductsData();
