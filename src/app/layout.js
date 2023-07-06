@@ -1,3 +1,4 @@
+import ProductsContextProvider from "@/context/Products";
 import "./globals.css";
 import { Inter } from "next/font/google";
 // If loading a variable font, you don't need to specify the font weight
@@ -16,7 +17,11 @@ export default function RootLayout({ children }) {
         <title>CIB</title>
       </head>
       <body className="bg-white dark:bg-slate-800">
-        <div className={inter.className}>{children}</div>
+        <div className={inter.className}>
+          <ProductsContextProvider>
+            <>{children} </>
+          </ProductsContextProvider>
+        </div>
       </body>
     </html>
   );
