@@ -3,17 +3,15 @@ import AdminHeader from "@/components/AdminHeader";
 import ProductsContextProvider from "@/context/Products";
 export default function AdminLayout({ children }) {
   return (
-    <ProductsContextProvider>
-      <UserContextProvider>
-        <div className="h-screen dark:bg-slate-800">
-          <AdminHeader />
-          <div className="px-2 py-2 md:ml-64 md:py-4 md:px-4 ">
-            <div className="rounded-lg dark:border-gray-700 mt-14">
-              {children}
-            </div>
+    <UserContextProvider>
+      <div className="h-screen dark:bg-slate-800">
+        <AdminHeader />
+        <div className="px-2 py-2 md:ml-64 md:py-4 md:px-4 ">
+          <div className="rounded-lg dark:border-gray-700 mt-14">
+            {children}
           </div>
         </div>
-      </UserContextProvider>
-    </ProductsContextProvider>
+      </div>
+    </UserContextProvider>
   );
 }
