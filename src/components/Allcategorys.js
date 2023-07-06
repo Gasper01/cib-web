@@ -3,9 +3,9 @@ import { ProductsData } from "@/context/Products";
 import { useState } from "react";
 
 export default function Allcategory() {
-  const { uniqueCategories } = ProductsData();
   const [isOpen, setOpen] = useState();
-  const { selectedCategory, setSelectedCategory } = ProductsData();
+  const { selectedCategory, setSelectedCategory, uniqueCategories } =
+    ProductsData();
 
   const onClickSetCategory = (category) => {
     setSelectedCategory(category);
