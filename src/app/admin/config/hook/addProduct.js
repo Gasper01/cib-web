@@ -11,9 +11,9 @@ export function AddProducts(Id) {
   const Inicialstate = {
     nombre: "",
     ImgUrl: "",
-    cantIdad: 0,
+    cantidad: 0,
     codigo: 0,
-    unIdad: "",
+    unidad: "",
     category: selectedCategory,
   };
   const [formData, setFormData] = useState(Inicialstate);
@@ -23,15 +23,15 @@ export function AddProducts(Id) {
       const producto = products.find((product) => product.id === Id);
 
       if (producto) {
-        const { nombre, ImgUrl, cantIdad, codigo, unIdad, category } = producto;
+        const { nombre, ImgUrl, cantidad, codigo, unidad, category } = producto;
         setSelectedCategory(category);
         setFormData({
           ...formData,
           nombre: nombre,
           ImgUrl: ImgUrl,
-          cantIdad: cantIdad,
+          cantidad: cantidad,
           codigo: codigo,
-          unIdad: unIdad,
+          unidad: unidad,
         });
       }
     }
