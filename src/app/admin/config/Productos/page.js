@@ -1,4 +1,4 @@
-import AllCategorys from "@/components/Allcategorys";
+import AllCategorys from "@/components/Categorys";
 
 export default function Page() {
   return (
