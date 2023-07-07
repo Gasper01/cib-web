@@ -1,9 +1,9 @@
-import Allcategory from "@/components/Allcategorys";
+import AllCategorys from "@/components/Allcategorys";
 
 export default function Page() {
   return (
     <div className="flex">
-      <Allcategory />
+      <AllCategorys />
     </div>
   );
 }
