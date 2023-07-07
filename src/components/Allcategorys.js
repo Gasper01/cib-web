@@ -3,7 +3,7 @@ import { ProductsData } from "@/context/ProductContext";
 import { useState } from "react";
 
 export default function Allcategory() {
-  const [isOpen, setOpen] = useState();
+  const [isOpen, setOpen] = useState(false);
   const { selectedCategory, setSelectedCategory, uniqueCategories } =
     ProductsData();
 
@@ -13,7 +13,7 @@ export default function Allcategory() {
   };
 
   return (
-    <>
+    <nav>
       <button
         onClick={() => setOpen(!isOpen)}
         id="dropdown-button"
@@ -52,6 +52,6 @@ export default function Allcategory() {
           </ul>
         </div>
       )}
-    </>
+    </nav>
   );
 }
