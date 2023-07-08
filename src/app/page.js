@@ -1,5 +1,5 @@
 import Categorys from "@/components/Categorys";
-export default function Home() {
+export default function Page() {
   return (
     <div className="flex">
       <Categorys />
