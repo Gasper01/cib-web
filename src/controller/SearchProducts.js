@@ -88,7 +88,6 @@ export function SearchProductsController({
       setSearching(true);
       const response = await CreateSalida(selectedProducts);
       if (!response == "ok") {
-        console.log(response);
         setSearching(false);
         throw new Error(response.message);
       }

@@ -39,7 +39,6 @@ export function OptionsSalidas({ params }) {
       const res = await DeleteSalidasById(Id);
 
       if (res.message == "ok") {
-        console.log("hola");
         router.push("/admin/solicitudes");
         setSalidasChange(true);
       }
