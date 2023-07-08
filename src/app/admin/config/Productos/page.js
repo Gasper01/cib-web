@@ -1,5 +1,5 @@
 import Categorys from "../component/Categorys";
-import ProductsTable from "../component/productsTable";
+import ProductsTable from "../component/ProductsTable";
 import SearchProductsHome from "@/components/SaerchProductHome";
 
 export default function Page() {

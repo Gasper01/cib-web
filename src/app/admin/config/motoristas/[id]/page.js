@@ -1,7 +1,7 @@
 "use client";
-import Form from "../../component/form";
-import Input from "../../component/input";
-import Cards from "../../component/cards";
+import Form from "../../component/Form";
+import Input from "../../component/Input";
+import Cards from "../../component/Cards";
 import AddMotiristas from "../../hook/motoristas";
 export default function Page({ params }) {
   const { Id } = params;

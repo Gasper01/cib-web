@@ -1,10 +1,9 @@
 "use client";
 
-import Cards from "../../../component/cards";
-import Categorys from "../../../component/Categorys";
-import Form from "../../../component/form";
-import Input from "../../../component/input";
-import { AddProducts } from "../../../hook/addProduct";
+import Cards from "../../component/Cards";
+import Form from "../../component/Form";
+import Input from "../../component/Input";
+import { AddProducts } from "../../hook/addProduct";
 
 export default function Page({ params }) {
   const { Id } = params;
@@ -23,10 +22,9 @@ export default function Page({ params }) {
     <Cards
       message={message.message}
       title={Title}
-      url={"/admin/config/products"}
+      url={"/admin/config/Productos"}
       texturl={"Regresar a Productos"}
     >
-      <Categorys />
       <Form isloadin={isloadin} bottontext={bottontext} onSubmit={onSubmitForm}>
         <Input
           label={"nombre"}
