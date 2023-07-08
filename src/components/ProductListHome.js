@@ -7,14 +7,14 @@ export default function ProductListHome() {
   const { products, isLoading } = ProductsData();
 
   return (
-    <>
+    <div>
       {isLoading ? (
         <LoadingSkeleton />
       ) : (
-        <div className="grid grid-cols-2 mb-24 gap-x-6 gap-y-10 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.length > 0 ? (
-            <>
-              {products.map((res) => (
+        <section>
+          {products?.length > 0 ? (
+            <div className="grid grid-cols-2 mb-24 gap-x-6 gap-y-10 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+              {products?.map((res) => (
                 <Link key={res.id} href="#" rel="preload" className="group">
                   <div className="w-full overflow-hidden bg-gray-200 rounded-lg dark:bg-slate-800 aspect-h-1 aspect-w-1 xl:aspect-h-6 xl:aspect-w-7">
                     <UnoptimizedImage
@@ -40,14 +40,14 @@ export default function ProductListHome() {
                   )}
                 </Link>
               ))}
-            </>
+            </div>
           ) : (
             <h2 className="py-8 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               No hay prodcutos
             </h2>
           )}
-        </div>
+        </section>
       )}
-    </>
+    </div>
   );
 }
