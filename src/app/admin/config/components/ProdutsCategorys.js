@@ -1,4 +1,3 @@
-"use client";
 import { ProductsData } from "@/context/ProductContext";
 import { useState } from "react";
 

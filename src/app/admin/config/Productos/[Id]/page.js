@@ -1,5 +1,4 @@
 "use client";
-
 import Cards from "../../components/Cards";
 import Form from "../../components/Form";
 import Input from "../../components/Input";
@@ -57,7 +56,7 @@ export default function Page({ params }) {
           type={"text"}
           name={"unIdad"}
           placeholder={"UND, GALONES, LITROS, CUARTOS"}
-          value={formData.unIdad}
+          value={formData.unidad}
           onChange={handleChange}
         />
         <Input
