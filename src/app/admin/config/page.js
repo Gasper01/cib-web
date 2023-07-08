@@ -1,4 +1,4 @@
-import CardsButton from "./component/Cardbuton";
+import CardsButton from "./components/Cardbuton";
 
 export default function Page() {
   return (

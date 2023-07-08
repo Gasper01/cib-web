@@ -1,8 +1,9 @@
 "use client";
-import Form from "../../component/Form";
-import Input from "../../component/Input";
-import Cards from "../../component/Cards";
+import Form from "../../components/Form";
+import Input from "../../components/Input";
+import Cards from "../../components/Cards";
 import AddMotiristas from "../../hook/motoristas";
+
 export default function Page({ params }) {
   const { Id } = params;
   let Title = "Agregar Nuevo Motorista";
