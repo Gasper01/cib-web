@@ -3,6 +3,7 @@
 import Cards from "../../components/Cards";
 import Form from "../../components/Form";
 import Input from "../../components/Input";
+import Categorys from "../../components/ProdutsCategorys";
 import { AddProducts } from "../../hook/addProduct";
 
 export default function Page({ params }) {
@@ -22,9 +23,10 @@ export default function Page({ params }) {
     <Cards
       message={message.message}
       title={Title}
-      url={"/admin/config/products"}
+      url={"/admin/config/Productos"}
       texturl={"Regresar a Productos"}
     >
+      <Categorys />
       <Form isloadin={isloadin} bottontext={bottontext} onSubmit={onSubmitForm}>
         <Input
           label={"nombre"}
