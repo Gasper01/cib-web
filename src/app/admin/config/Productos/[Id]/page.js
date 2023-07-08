@@ -1,9 +1,9 @@
 "use client";
 
-import Cards from "../../component/Cards";
-import Form from "../../component/Form";
-import Input from "../../component/Input";
-import { AddProducts } from "../../hook/addProduct";
+import Cards from "@/app/admin/config/component/Cards";
+import Form from "@/app/admin/config/component/Form";
+import Input from "@/app/admin/config/component/Input";
+import { AddProducts } from "@/app/admin/config/hook/addProduct";
 
 export default function Page({ params }) {
   const { Id } = params;
