@@ -31,7 +31,7 @@ export default function ProductsTable() {
             <td className="flex justify-end px-6 py-4">
               <Link
                 className="font-medium text-green-600 dark:text-green-600"
-                href={`/admin/config/products/${res.id}`}
+                href={`/admin/config/products/view/${res.id}`}
               >
                 Editar
               </Link>
