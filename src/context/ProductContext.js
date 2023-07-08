@@ -4,13 +4,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const ProductsContext = createContext(null);
 export const ProductsData = () => {
   const context = useContext(ProductsContext);
-
-  if (!context) {
-    console.error(
-      "ProductsData debe ser utilizado dentro del proveedor de contexto ProductsContextProvider"
-    );
-  }
-
   return context;
 };
 
@@ -51,11 +44,6 @@ export default function ProductsContextProvider({ children }) {
 
   const uniqueCategories = [...new Set(allProducts.map((res) => res.category))];
 
-  if (ProductsContext === null) {
-    console.error(
-      "Los componentes que utilizan el contexto ProductsContext deben estar envueltos dentro de ProductsContextProvider"
-    );
-  }
   return (
     <ProductsContext.Provider
       value={{
