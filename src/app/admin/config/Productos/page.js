@@ -1,4 +1,4 @@
-import Categorys from "../components/Categorys";
+import Categorys from "../component/Categorys";
 import ProductsTable from "../component/productsTable";
 import SearchProductsHome from "@/components/SaerchProductHome";
 
