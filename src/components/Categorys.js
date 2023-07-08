@@ -2,7 +2,7 @@
 import { ProductsData } from "@/context/ProductContext";
 import { useState } from "react";
 
-export default function Allcategirys() {
+export default function Categorys() {
   const [isOpen, setOpen] = useState(false);
   const { selectedCategory, setSelectedCategory, uniqueCategories } =
     ProductsData();
@@ -11,7 +11,6 @@ export default function Allcategirys() {
     setSelectedCategory(category);
     setOpen(!isOpen);
   };
-
   return (
     <nav>
       <button
