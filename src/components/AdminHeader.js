@@ -5,7 +5,9 @@ import Sidebar from "./Sidebar";
 import Notyfi from "./Notyfi";
 import Link from "next/link";
 import UnoptimizedImage from "./UnoptimizedImage";
+import { UserProfile } from "@/context/User";
 export default function AdminHeader() {
+  const { user } = UserProfile();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [SidebarOpen, setSidebarOpen] = useState(false);
   const ref = useRef(null);
@@ -93,7 +95,7 @@ export default function AdminHeader() {
                       <UnoptimizedImage
                         width={130}
                         height={130}
-                        src="/user.png"
+                        src={user.imgUrl || "/user.png"}
                         alt="user"
                         className="object-cover object-center w-full h-full rounded-full"
                       />

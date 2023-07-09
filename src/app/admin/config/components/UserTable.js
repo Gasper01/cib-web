@@ -34,13 +34,16 @@ export default function UsersTable() {
               scope="row"
               className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
             >
-              <Image
-                width={130}
-                height={130}
-                className="w-10 h-10 rounded-full"
-                src="https://i.pinimg.com/originals/8b/da/ca/8bdaca81d5ddbaeb92b61d6b5787d866.jpg"
-                alt="Jese image"
-              />
+              <div className="w-10 h-10 ">
+                <Image
+                  width={130}
+                  height={130}
+                  className="object-cover object-center w-full h-full rounded-full "
+                  src={res.imgUrl || "/user.png"}
+                  alt="Jese image"
+                />
+              </div>
+
               <div className="pl-3">
                 <div className="text-base font-semibold">{res.username}</div>
                 <div className="font-normal text-gray-500">{res.email}</div>
