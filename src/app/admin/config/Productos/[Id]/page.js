@@ -40,6 +40,7 @@ export default function Page({ params }) {
           type={"text"}
           name={"codigo"}
           placeholder={""}
+          disabled={Id !== "nuevo"}
           value={formData.codigo}
           onChange={handleChange}
         />

@@ -1,8 +1,10 @@
 import { GetMotoristas } from "@/lib/GetData";
 import { CreateMotoristas } from "@/lib/PostData";
 import { UpdateMotoristas } from "@/lib/PutAndDeleteData";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 export default function AddMotiristas(Id) {
+  const router = useRouter();
   const [isloading, setLoading] = useState(false);
   const [message, setErrorMessage] = useState("");
   const [motoristas, setMotoristas] = useState([]);
@@ -57,6 +59,7 @@ export default function AddMotiristas(Id) {
         setLoading(false);
       }
       setLoading(false);
+      router.push("/admin/config/motoristas");
     } catch (error) {
       setLoading(false);
     }

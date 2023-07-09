@@ -29,6 +29,7 @@ export default function Page({ params }) {
           label={"Nombre"}
           type={"text"}
           name={"motoristaName"}
+          disabled={Id !== "nuevo"}
           placeholder={"Gaspar Tabora Funez"}
           value={formData.motoristaName}
           onChange={handleChange}
