@@ -56,18 +56,18 @@ export function AddProducts(Id) {
     e.preventDefault();
     try {
       setLoading(true);
-      if (Id !== "nuevo") {
-        setErrorMessage(await UpdateProductById(Id, formData));
-      } else {
-        setErrorMessage(await CreateProducts(formData));
-      }
-      if (!message == "ok") {
+
+      const actionMessage =
+        Id !== "nuevo"
+          ? await UpdateProductById(Id, formData)
+          : await CreateProducts(formData);
+      setErrorMessage(actionMessage);
+      if (actionMessage.message !== "ok") {
         setLoading(false);
+        return message;
       }
       setUpdate(true);
-      setLoading(false);
       router.push("/admin/config/Productos");
-      setFormData(Inicialstate);
     } catch (error) {
       setLoading(false);
     }

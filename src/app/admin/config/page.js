@@ -14,7 +14,7 @@ export default function Page() {
           text={"Productos"}
         />
         <CardsButton
-          url={"/admin/"}
+          url={"/admin/config/User"}
           img={"/user.png"}
           alt={"Usuario"}
           text={"Usuarios"}

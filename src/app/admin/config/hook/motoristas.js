@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 export default function AddMotiristas(Id) {
   const router = useRouter();
   const [isloading, setLoading] = useState(false);
-  const [message, setErrorMessage] = useState("");
+  const [message, setErrorMessage] = useState([]);
   const [motoristas, setMotoristas] = useState([]);
   const [formData, setFormData] = useState({
     motoristaName: "",
@@ -49,16 +49,18 @@ export default function AddMotiristas(Id) {
     e.preventDefault();
     try {
       setLoading(true);
-      if (Id !== "nuevo") {
-        setErrorMessage(await UpdateMotoristas(Id, formData));
-      } else {
-        setErrorMessage(await CreateMotoristas(formData));
+
+      const actionMessage =
+        Id !== "nuevo"
+          ? await UpdateMotoristas(Id, formData)
+          : await CreateMotoristas(formData);
+      setErrorMessage(actionMessage);
+
+      if (actionMessage.message !== "ok") {
+        setLoading(false);
+        return message;
       }
 
-      if (!message == "ok") {
-        setLoading(false);
-      }
-      setLoading(false);
       router.push("/admin/config/motoristas");
     } catch (error) {
       setLoading(false);

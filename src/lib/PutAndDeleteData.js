@@ -8,6 +8,10 @@ export async function UpdateProductById(productId, Products) {
     true
   );
 }
+
+export async function UpdateUser(userId, Userdata) {
+  return fetchWithOption(`${TextUrl}/user/${userId}`, "PUT", Userdata, true);
+}
 export async function UpdateMotoristas(motoristaId, datamotorista) {
   return fetchWithOption(
     `${baseURL}/motoristas/${motoristaId}`,
