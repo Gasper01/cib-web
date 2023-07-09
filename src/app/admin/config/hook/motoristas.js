@@ -24,7 +24,7 @@ export default function AddMotiristas(Id) {
 
   useEffect(() => {
     if (Id !== "nuevo") {
-      const motorista = motoristas.find((motorista) => motorista.Id === Id);
+      const motorista = motoristas.find((motorista) => motorista.id === Id);
 
       if (motorista) {
         const { motoristaName, cars, placa } = motorista;
