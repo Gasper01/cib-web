@@ -10,7 +10,7 @@ export async function UpdateProductById(productId, Products) {
 }
 
 export async function UpdateUser(userId, Userdata) {
-  return fetchWithOption(`${TextUrl}/user/${userId}`, "PUT", Userdata, true);
+  return fetchWithOption(`${baseURL}/user/${userId}`, "PUT", Userdata, true);
 }
 export async function UpdateMotoristas(motoristaId, datamotorista) {
   return fetchWithOption(
