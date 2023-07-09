@@ -54,7 +54,7 @@ export default function Page({ params }) {
         <Input
           label={"UND"}
           type={"text"}
-          name={"unIdad"}
+          name={"unidad"}
           placeholder={"UND, GALONES, LITROS, CUARTOS"}
           value={formData.unidad}
           onChange={handleChange}

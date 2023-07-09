@@ -13,7 +13,6 @@ export default function Page({ params }) {
   let bottontext = "Agregar";
 
   if (Id !== "nuevo") {
-    console.log(Id);
     Title = "Editar Motorista";
     bottontext = "Salvar Cambios";
   }
