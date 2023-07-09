@@ -2,8 +2,9 @@ import { ProductsData } from "@/context/ProductContext";
 import { useState, useEffect } from "react";
 import { CreateProducts } from "@/lib/PostData";
 import { UpdateProductById } from "@/lib/PutAndDeleteData";
-
+import { useRouter } from "next/navigation";
 export function AddProducts(Id) {
+  const router = useRouter();
   const { setUpdate, selectedCategory, setSelectedCategory, products } =
     ProductsData();
   const [isloading, setLoading] = useState(false);
@@ -35,7 +36,7 @@ export function AddProducts(Id) {
         });
       }
     }
-  }, [Id, products]);
+  }, [Id]);
 
   const handleChange = (e) => {
     setFormData({
@@ -65,6 +66,7 @@ export function AddProducts(Id) {
       }
       setUpdate(true);
       setLoading(false);
+      router.push("/admin/config/Productos");
       setFormData(Inicialstate);
     } catch (error) {
       setLoading(false);
