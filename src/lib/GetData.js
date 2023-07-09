@@ -42,7 +42,7 @@ export async function GetSalidasUserById(Id, page) {
 }
 
 export async function GetUsers() {
-  return fetchWithOption(`${TextUrl}/user`, "GET", null, true);
+  return fetchWithOption(`${baseURL}/user`, "GET", null, true);
 }
 
 export async function Search(search) {
