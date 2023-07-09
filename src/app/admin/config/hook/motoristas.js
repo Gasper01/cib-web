@@ -17,10 +17,10 @@ export default function AddMotiristas(Id) {
       setMotoristas(await GetMotoristas());
     }
     GetDataMotorista();
-  }, [Id, motoristas]);
+  }, [Id]);
 
   useEffect(() => {
-    if (Id !== "nuevo") {
+    if (Id !== undefined) {
       const motorista = motoristas.find((motorista) => motorista.id === Id);
 
       if (motorista) {
