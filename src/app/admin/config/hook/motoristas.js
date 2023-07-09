@@ -6,8 +6,6 @@ export default function AddMotiristas(Id) {
   const [isloading, setLoading] = useState(false);
   const [message, setErrorMessage] = useState("");
   const [motoristas, setMotoristas] = useState([]);
-  const [isUpdate, setUpdate] = useState(false);
-
   const [formData, setFormData] = useState({
     motoristaName: "",
     cars: "",
@@ -17,10 +15,9 @@ export default function AddMotiristas(Id) {
   useEffect(() => {
     async function GetDataMotorista() {
       setMotoristas(await GetMotoristas());
-      setUpdate(false);
     }
     GetDataMotorista();
-  }, [isUpdate]);
+  }, [Id]);
 
   useEffect(() => {
     if (Id !== "nuevo") {
@@ -59,7 +56,6 @@ export default function AddMotiristas(Id) {
       if (!message == "ok") {
         setLoading(false);
       }
-      setUpdate(true);
       setLoading(false);
     } catch (error) {
       setLoading(false);
