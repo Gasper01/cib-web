@@ -22,7 +22,7 @@ export default function DasbordAdmin() {
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <Link
           href="/admin/salidasuser"
-          className="flex items-center p-4 bg-gray-200 rounded-lg shadow-xs dark:bg-gray-700"
+          className="flex items-center p-4 rounded-lg shadow-xs bg-lime-600 dark:bg-lime-600"
         >
           <div className="p-3 mr-4 text-green-500 bg-blue-100 rounded-full">
             <UnoptimizedImage
