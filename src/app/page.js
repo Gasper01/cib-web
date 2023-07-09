@@ -1,3 +1,4 @@
+"use client";
 import Categorys from "@/components/Categorys";
 import Footer from "@/components/Footer";
 import HeadersHome from "@/components/HeadersHome";

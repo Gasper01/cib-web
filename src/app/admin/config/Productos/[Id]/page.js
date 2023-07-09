@@ -1,8 +1,8 @@
 "use client";
+import Categorys from "@/components/Categorys";
 import Cards from "../../components/Cards";
 import Form from "../../components/Form";
 import Input from "../../components/Input";
-import Categorys from "../../components/ProdutsCategorys";
 import { AddProducts } from "../../hook/addProduct";
 
 export default function Page({ params }) {
