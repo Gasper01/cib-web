@@ -6,15 +6,17 @@ import AddMotiristas from "../../hook/motoristas";
 
 export default function Page({ params }) {
   const { Id } = params;
+  const { onSubmitForm, handleChange, formData, isloadin, message } =
+    AddMotiristas(Id);
+
   let Title = "Agregar Nuevo Motorista";
   let bottontext = "Agregar";
 
   if (Id !== "nuevo") {
+    console.log(Id);
     Title = "Editar Motorista";
     bottontext = "Salvar Cambios";
   }
-  const { onSubmitForm, handleChange, formData, isloadin, message } =
-    AddMotiristas(Id);
 
   return (
     <Cards

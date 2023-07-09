@@ -7,6 +7,8 @@ import { AddProducts } from "../../hook/addProduct";
 
 export default function Page({ params }) {
   const { Id } = params;
+  const { onSubmitForm, handleChange, formData, isloadin, message } =
+    AddProducts(Id);
 
   let Title = "Agregar Nuevo Producto";
   let bottontext = "Agregar";
@@ -15,8 +17,6 @@ export default function Page({ params }) {
     Title = "Editar Producto";
     bottontext = "Salvar Cambios";
   }
-  const { onSubmitForm, handleChange, formData, isloadin, message } =
-    AddProducts(Id);
 
   return (
     <Cards

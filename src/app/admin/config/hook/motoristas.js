@@ -17,7 +17,7 @@ export default function AddMotiristas(Id) {
       setMotoristas(await GetMotoristas());
     }
     GetDataMotorista();
-  }, [Id]);
+  }, [Id, motoristas]);
 
   useEffect(() => {
     if (Id !== "nuevo") {
